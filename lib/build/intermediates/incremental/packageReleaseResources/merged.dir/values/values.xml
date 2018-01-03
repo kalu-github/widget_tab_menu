@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TabMenuLayout"><attr format="boolean" name="tml_switch_alpha"/></declare-styleable>
+    <declare-styleable name="TabMenuView"><attr format="reference" name="tmv_icon_normal"/><attr format="reference" name="tmv_icon_selected"/><attr format="string" name="tmv_text"/><attr format="dimension" name="tmv_text_size"/><attr format="color" name="tmv_text_color_normal"/><attr format="color" name="tmv_text_color_selected"/><attr format="color" name="tmv_badge_color_background"/><attr format="dimension" name="tmv_badge_padding_icon"/></declare-styleable>
+</resources>

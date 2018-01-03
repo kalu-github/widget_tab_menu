@@ -1,0 +1,4 @@
+#Thu Jan 04 03:48:36 CST 2018
+base.0=D\:\\Android\\space\\TabMenuLayout_v1.0\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

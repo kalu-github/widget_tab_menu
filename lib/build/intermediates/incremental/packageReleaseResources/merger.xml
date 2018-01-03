@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="D:\Android\space\TabMenuLayout_v1.0\lib\src\main\res"/><source path="D:\Android\space\TabMenuLayout_v1.0\lib\build\generated\res\rs\release"/><source path="D:\Android\space\TabMenuLayout_v1.0\lib\build\generated\res\resValues\release"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="D:\Android\space\TabMenuLayout_v1.0\lib\src\main\res"><file path="D:\Android\space\TabMenuLayout_v1.0\lib\src\main\res\values\attrs.xml" qualifiers=""><declare-styleable name="TabMenuLayout">
+        <attr format="boolean" name="tml_switch_alpha"/>
+    </declare-styleable><declare-styleable name="TabMenuView">
+
+        <attr format="reference" name="tmv_icon_normal"/>
+        <attr format="reference" name="tmv_icon_selected"/>
+
+        <attr format="string" name="tmv_text"/>
+        <attr format="dimension" name="tmv_text_size"/>
+        <attr format="color" name="tmv_text_color_normal"/>
+        <attr format="color" name="tmv_text_color_selected"/>
+        <attr format="color" name="tmv_badge_color_background"/>
+        <attr format="dimension" name="tmv_badge_padding_icon"/>
+    </declare-styleable></file></source><source path="D:\Android\space\TabMenuLayout_v1.0\lib\build\generated\res\rs\release"/><source path="D:\Android\space\TabMenuLayout_v1.0\lib\build\generated\res\resValues\release"/></dataSet><dataSet config="release$Generated" generated="true"><source path="D:\Android\space\TabMenuLayout_v1.0\lib\src\release\res"/></dataSet><dataSet config="release" generated-set="release$Generated"><source path="D:\Android\space\TabMenuLayout_v1.0\lib\src\release\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="TabMenuLayout"><attr format="boolean" name="tml_switch_alpha"/></declare-styleable><declare-styleable name="TabMenuView"><attr format="reference" name="tmv_icon_normal"/><attr format="reference" name="tmv_icon_selected"/><attr format="string" name="tmv_text"/><attr format="dimension" name="tmv_text_size"/><attr format="color" name="tmv_text_color_normal"/><attr format="color" name="tmv_text_color_selected"/><attr format="color" name="tmv_badge_color_background"/><attr format="dimension" name="tmv_badge_padding_icon"/></declare-styleable></configuration></mergedItems></merger>

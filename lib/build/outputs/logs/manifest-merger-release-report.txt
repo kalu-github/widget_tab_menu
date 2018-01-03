@@ -1,23 +1,23 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
-INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
-INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
-INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
-INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
-INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
-INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
+ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
+INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
+INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
+INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
+INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
+INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
+INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
 	package
-		ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:11-33
+		ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:11-37
 		INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml
 		INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml
-		ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
+		ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
 		INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml
-		ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-36
+		ADDED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml:1:1-40
 		INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml
 uses-sdk
 INJECTED from D:\Android\space\TabMenuLayout_v1.0\lib\src\main\AndroidManifest.xml reason: use-sdk injection requested

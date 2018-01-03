@@ -1,18 +1,18 @@
 [
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\layout-v21\\notification_template_icon_group.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\87c4539c779b35427048600bac54a04b\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\layout-v21\\notification_action_tombstone.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\87c4539c779b35427048600bac54a04b\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\layout-v21\\notification_template_custom_big.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\87c4539c779b35427048600bac54a04b\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\layout-v21\\notification_action.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\87c4539c779b35427048600bac54a04b\\res\\layout-v21\\notification_action.xml"
     }
 ]

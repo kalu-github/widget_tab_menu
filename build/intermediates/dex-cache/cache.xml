@@ -8,72 +8,32 @@
         min-sdk-version="14"
         optimize="true"
         revision="26.0.2"
-        sha1="b611cd2b230d26d47899483c05b73f91a1645c4c">
-        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\11.jar" />
+        sha1="92efd8b952c19219536ea12f0003684b5576710b">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\14.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\support-core-ui-25.3.1.aar\ef9ecf9e058ad35bbbfa8ce9b19520e0\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\e1923d7707fef772b6f69282f4f089b8\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="14"
         optimize="true"
         revision="26.0.2"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
-        jumboMode="false"
-        min-sdk-version="14"
-        optimize="true"
-        revision="26.0.2"
-        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\10.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.1.aar\c925edb64a614ef57403b7014dea2b17\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="14"
-        optimize="true"
-        revision="26.0.2"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\support-compat-25.3.1.aar\94d440eb14822591b21c5b538f5dab7f\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="14"
-        optimize="true"
-        revision="26.0.2"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.3.1.aar\1cd0bc3d390db4f3779a66058caa3b94\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="14"
-        optimize="true"
-        revision="26.0.2"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
         <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\2.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\support-media-compat-25.3.1.aar\8f11ee2b108704458f9a7b6085e2a746\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\0052139a289c17350a655e02662e1b18\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="14"
         optimize="true"
         revision="26.0.2"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\6.jar" />
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\3.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\support-v4-25.3.1.aar\4652319790b1975ada87e51173d8a1a9\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\dc8d042d79bc7d6e5a579f66ea08fd8f\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="14"
         optimize="true"
@@ -83,33 +43,103 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\support-fragment-25.3.1.aar\498bc6d254d0aba1e93a3d6c641e08c7\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\c515377bfbdeb0d4702c8a2e99bf6e23\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="14"
         optimize="true"
         revision="26.0.2"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
         <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\5.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\support-core-utils-25.3.1.aar\e9bd85e48fc2d15cae06ec8210a5a02f\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.1.0\814258103cf26a15fcc26ecce35f5b7d24b73f8\support-annotations-26.1.0.jar"
         jumboMode="false"
         min-sdk-version="14"
         optimize="true"
         revision="26.0.2"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\c3cbd6c7aebddb5ff8602d4e841fe56c\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
         <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.3.1.aar\6738460af3cce0b28171224f8c4bf4a1\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\78a7372ca66cb77894e72010b5837f8d\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="14"
         optimize="true"
         revision="26.0.2"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\3.jar" />
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\87c4539c779b35427048600bac54a04b\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cdf55fcc20777f47d8c9a0d306970cf7\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\00acb9a6fa91bc565014a5efe7dbd1e9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\b32c5379372cf96b8c020df19b2230f6\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0\e414a4cb28434e25c4f6aa71426eb20cf4874ae9\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="D:\Android\space\TabMenuLayout_v1.0\app\build\intermediates\transforms\preDex\release\13.jar" />
     </item>
 
 </items>

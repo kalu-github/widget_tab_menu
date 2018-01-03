@@ -4,7 +4,7 @@
             "outputFile": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\00acb9a6fa91bc565014a5efe7dbd1e9\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",
@@ -20,7 +20,7 @@
             "outputFile": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\00acb9a6fa91bc565014a5efe7dbd1e9\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

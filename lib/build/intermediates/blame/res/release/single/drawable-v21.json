@@ -1,18 +1,18 @@
 [
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_edit_text_material.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\drawable-v21\\abc_edit_text_material.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\00acb9a6fa91bc565014a5efe7dbd1e9\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_btn_colored_material.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\drawable-v21\\abc_btn_colored_material.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\00acb9a6fa91bc565014a5efe7dbd1e9\\res\\drawable-v21\\abc_btn_colored_material.xml"
     },
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_action_bar_item_background_material.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\00acb9a6fa91bc565014a5efe7dbd1e9\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     },
     {
         "merged": "D:\\Android\\space\\TabMenuLayout_v1.0\\lib\\build\\intermediates\\res\\merged\\release\\drawable-v21\\notification_action_background.xml",
-        "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c925edb64a614ef57403b7014dea2b17\\res\\drawable-v21\\notification_action_background.xml"
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\87c4539c779b35427048600bac54a04b\\res\\drawable-v21\\notification_action_background.xml"
     }
 ]

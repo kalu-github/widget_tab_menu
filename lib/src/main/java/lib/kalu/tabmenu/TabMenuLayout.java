@@ -67,7 +67,7 @@ public class TabMenuLayout extends LinearLayout {
             isSwitchAlpha = array.getBoolean(R.styleable.TabMenuLayout_tml_switch_alpha, false);
             isSwitchPager = array.getBoolean(R.styleable.TabMenuLayout_tml_switch_pager, false);
         } catch (Exception e) {
-           // LogUtil.e("TabMenuLayout", e.getMessage(), e);
+            // LogUtil.e("TabMenuLayout", e.getMessage(), e);
         } finally {
             array.recycle();
         }
@@ -208,13 +208,12 @@ public class TabMenuLayout extends LinearLayout {
         }
     }
 
-    public void setTabCurrenItem(int tabIndex) {
+    public void setTabSelected(int tabIndex) {
         if (tabIndex < mChildCounts && tabIndex > -1) {
             mTabViews.get(tabIndex).performClick();
         } else {
             throw new IllegalArgumentException("IndexOutOfBoundsException");
         }
-
     }
 
     /**
@@ -226,9 +225,6 @@ public class TabMenuLayout extends LinearLayout {
         }
     }
 
-    /**
-     * @return 当View被销毁的时候，保存数据
-     */
     @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
@@ -237,9 +233,6 @@ public class TabMenuLayout extends LinearLayout {
         return bundle;
     }
 
-    /**
-     * @param state 用于恢复数据使用
-     */
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
         if (state instanceof Bundle) {
@@ -266,8 +259,8 @@ public class TabMenuLayout extends LinearLayout {
         /**
          * Tab点击监听
          *
-         * @param isSelected  当前是否已经被选中
-         * @param position 位置标记
+         * @param isSelected 当前是否已经被选中
+         * @param position   位置标记
          */
         void onTabMenuClick(boolean isSelected, int position);
 

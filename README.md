@@ -1,4 +1,4 @@
-![image](https://github.com/153437803/RecyclerAdapter/blob/master/Screenrecorder-2017-12-05-00.png )
+![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-01-04.gif )
 
 ```
     <declare-styleable name="TabMenuLayout">

@@ -1,3 +1,5 @@
+![image](https://github.com/153437803/RecyclerAdapter/blob/master/Screenrecorder-2017-12-05-00.png )
+
 ```
     <declare-styleable name="TabMenuLayout">
         <attr name="tml_switch_alpha" format="boolean" />

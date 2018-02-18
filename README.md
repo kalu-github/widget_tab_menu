@@ -14,6 +14,31 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
 1.点击选中菜单, 列表回滚到顶部, 功能已实现
 2.菜单切换, 图片缩小放大动画, 功能已实现（类是淘宝）
 3.左右滑动, 底部菜单颜色渐变, 功能已实现
+4.viewpager可以滑动, 也可以禁止左右滑动
+```
+
+# viewpager禁止左右滑动：
+```
+public final class MeViewPager extends ViewPager {
+
+        public MeViewPager(Context context) {
+            super(context);
+        }
+
+        public MeViewPager(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+
+        @Override
+        public boolean onTouchEvent(MotionEvent arg0) {
+            return false;
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(MotionEvent arg0) {
+            return false;
+        }
+}
 ```
 
 # 自定义属性：

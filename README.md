@@ -7,6 +7,7 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
 
 ![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-01-04.gif )
 ![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-02-19.gif )
+![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-02-20.gif )
 
 ```
 ###解决问题：

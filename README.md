@@ -1,3 +1,5 @@
+![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-01-04.gif )
+
 ```
     <declare-styleable name="TabMenuLayout">
         <attr name="tml_switch_alpha" format="boolean" />

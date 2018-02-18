@@ -9,7 +9,7 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
 ![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-02-19.gif )
 
 ```
-### 解决问题：
+###解决问题：
 
 1.点击选中菜单, 列表回滚到顶部, 功能已实现
 2.菜单切换, 图片缩小放大动画, 功能已实现（类是淘宝）
@@ -17,7 +17,7 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
 ```
 
 ```
-### 自定义属性：
+###自定义属性：
  
 <declare-styleable name="TabMenuLayout">
     <!-- 滑动变化透明度 -->

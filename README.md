@@ -6,6 +6,7 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
  [戳我下载 ==>](https://pan.baidu.com/s/1hueqEeK)
 
 ![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-01-04.gif )
+![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-02-19.gif )
 
 ```
 解决问题：

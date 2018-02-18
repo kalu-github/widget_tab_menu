@@ -4,7 +4,7 @@
             "outputFile": "D:\\Android\\space\\TabMenuLayout_v1.0\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\c515377bfbdeb0d4702c8a2e99bf6e23\\res\\values-v24\\values-v24.xml",
+                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\b0fdd57389e42ab90aa72611c5049eae\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\00acb9a6fa91bc565014a5efe7dbd1e9\\res\\values-v24\\values-v24.xml",
+                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\d137f54ad054b0d80f1cc73c422fb4ee\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

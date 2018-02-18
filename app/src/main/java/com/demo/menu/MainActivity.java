@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
         alphaTabsIndicator = (TabMenuLayout) findViewById(R.id.alphaIndicator);
         alphaTabsIndicator.setViewPager(mViewPger);
 
-        alphaTabsIndicator.getTabView(0).showNumber(6);
-        alphaTabsIndicator.getTabView(1).showNumber(888);
-        alphaTabsIndicator.getTabView(2).showNumber(88);
-        alphaTabsIndicator.getTabView(3).showPoint();
+        alphaTabsIndicator.setBadgeMessage(0, 6);
+        alphaTabsIndicator.setBadgeMessage(1, 888);
+        alphaTabsIndicator.setBadgeMessage(2, 88);
+        alphaTabsIndicator.setBadgeMessage(3);
 
         alphaTabsIndicator.setOnTabMenuChangedListener(new TabMenuLayout.OnTabMenuChangedListener() {
             @Override
@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             if (0 == position) {
-                alphaTabsIndicator.getTabView(0).showNumber(alphaTabsIndicator.getTabView(0).getBadgeNumber() - 1);
+                alphaTabsIndicator.setBadgeMessageBackup(0);
             } else if (2 == position) {
-                alphaTabsIndicator.getCurrentItemView().removeShow();
+                alphaTabsIndicator.removeCurrentBadgeMessage();
             } else if (3 == position) {
-                alphaTabsIndicator.removeAllBadge();
+                alphaTabsIndicator.removeAllBadgeMessage();
             }
         }
 

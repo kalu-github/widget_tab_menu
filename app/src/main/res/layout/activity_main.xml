@@ -16,7 +16,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         app:tml_click_scale="true"
-        app:tml_switch_alpha="false">
+        app:tml_switch_alpha="true">
 
         <lib.kalu.tabmenu.TabMenuView
             android:layout_width="0dp"

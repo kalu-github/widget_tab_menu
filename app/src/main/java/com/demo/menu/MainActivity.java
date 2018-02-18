@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         alphaTabsIndicator.setOnTabMenuChangedListener(new TabMenuLayout.OnTabMenuChangedListener() {
             @Override
             public void onTabMenuClick(boolean isSelected, int tabPosition) {
+                if(isSelected){
+                    Toast.makeText(getApplicationContext(), "当前菜单已被选中", Toast.LENGTH_SHORT).show();
+                }
                 Log.e("kalu", "onTabMenuClick ==> isSelected = " + isSelected + ", tabPosition = " + tabPosition);
             }
 

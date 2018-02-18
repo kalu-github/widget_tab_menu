@@ -1824,27 +1824,15 @@ public final class R {
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>May be a dimension value, which is a floating point number appended with a
-     * unit such as "<code>14.5sp</code>".
-     * Available units are: px (pixels), dp (density-independent pixels),
-     * sp (scaled pixels based on preferred font size), in (inches), and
-     * mm (millimeters).
      */
-    public static final int tmv_badge_padding_icon=0x7f0200f0;
+    public static final int tmv_icon_normal=0x7f0200f0;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int tmv_icon_normal=0x7f0200f1;
-    /**
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     */
-    public static final int tmv_icon_selected=0x7f0200f2;
+    public static final int tmv_icon_selected=0x7f0200f1;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1853,7 +1841,7 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int tmv_text=0x7f0200f3;
+    public static final int tmv_text=0x7f0200f2;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1863,7 +1851,7 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int tmv_text_color_normal=0x7f0200f4;
+    public static final int tmv_text_color_normal=0x7f0200f3;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1873,7 +1861,19 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int tmv_text_color_selected=0x7f0200f5;
+    public static final int tmv_text_color_selected=0x7f0200f4;
+    /**
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     * <p>May be a dimension value, which is a floating point number appended with a
+     * unit such as "<code>14.5sp</code>".
+     * Available units are: px (pixels), dp (density-independent pixels),
+     * sp (scaled pixels based on preferred font size), in (inches), and
+     * mm (millimeters).
+     */
+    public static final int tmv_text_padding_icon=0x7f0200f5;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -8010,22 +8010,22 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_background_selector_system com.demo.menu:tmv_background_selector_system}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_badge_color_background com.demo.menu:tmv_badge_color_background}</code></td><td></td></tr>
-     * <tr><td><code>{@link #TabMenuView_tmv_badge_padding_icon com.demo.menu:tmv_badge_padding_icon}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_icon_normal com.demo.menu:tmv_icon_normal}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_icon_selected com.demo.menu:tmv_icon_selected}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_text com.demo.menu:tmv_text}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_text_color_normal com.demo.menu:tmv_text_color_normal}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_text_color_selected com.demo.menu:tmv_text_color_selected}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabMenuView_tmv_text_padding_icon com.demo.menu:tmv_text_padding_icon}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuView_tmv_text_size com.demo.menu:tmv_text_size}</code></td><td></td></tr>
      * </table>
      * @see #TabMenuView_tmv_background_selector_system
      * @see #TabMenuView_tmv_badge_color_background
-     * @see #TabMenuView_tmv_badge_padding_icon
      * @see #TabMenuView_tmv_icon_normal
      * @see #TabMenuView_tmv_icon_selected
      * @see #TabMenuView_tmv_text
      * @see #TabMenuView_tmv_text_color_normal
      * @see #TabMenuView_tmv_text_color_selected
+     * @see #TabMenuView_tmv_text_padding_icon
      * @see #TabMenuView_tmv_text_size
      */
     public static final int[] TabMenuView={
@@ -8059,23 +8059,6 @@ public final class R {
      */
     public static final int TabMenuView_tmv_badge_color_background=1;
     /**
-     * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_badge_padding_icon}
-     * attribute's value can be found in the {@link #TabMenuView} array.
-     *
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>May be a dimension value, which is a floating point number appended with a
-     * unit such as "<code>14.5sp</code>".
-     * Available units are: px (pixels), dp (density-independent pixels),
-     * sp (scaled pixels based on preferred font size), in (inches), and
-     * mm (millimeters).
-     *
-     * @attr name com.demo.menu:tmv_badge_padding_icon
-     */
-    public static final int TabMenuView_tmv_badge_padding_icon=2;
-    /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_icon_normal}
      * attribute's value can be found in the {@link #TabMenuView} array.
      *
@@ -8086,7 +8069,7 @@ public final class R {
      *
      * @attr name com.demo.menu:tmv_icon_normal
      */
-    public static final int TabMenuView_tmv_icon_normal=3;
+    public static final int TabMenuView_tmv_icon_normal=2;
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_icon_selected}
      * attribute's value can be found in the {@link #TabMenuView} array.
@@ -8098,7 +8081,7 @@ public final class R {
      *
      * @attr name com.demo.menu:tmv_icon_selected
      */
-    public static final int TabMenuView_tmv_icon_selected=4;
+    public static final int TabMenuView_tmv_icon_selected=3;
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_text}
      * attribute's value can be found in the {@link #TabMenuView} array.
@@ -8112,7 +8095,7 @@ public final class R {
      *
      * @attr name com.demo.menu:tmv_text
      */
-    public static final int TabMenuView_tmv_text=5;
+    public static final int TabMenuView_tmv_text=4;
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_text_color_normal}
      * attribute's value can be found in the {@link #TabMenuView} array.
@@ -8127,7 +8110,7 @@ public final class R {
      *
      * @attr name com.demo.menu:tmv_text_color_normal
      */
-    public static final int TabMenuView_tmv_text_color_normal=6;
+    public static final int TabMenuView_tmv_text_color_normal=5;
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_text_color_selected}
      * attribute's value can be found in the {@link #TabMenuView} array.
@@ -8142,7 +8125,24 @@ public final class R {
      *
      * @attr name com.demo.menu:tmv_text_color_selected
      */
-    public static final int TabMenuView_tmv_text_color_selected=7;
+    public static final int TabMenuView_tmv_text_color_selected=6;
+    /**
+     * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_text_padding_icon}
+     * attribute's value can be found in the {@link #TabMenuView} array.
+     *
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     * <p>May be a dimension value, which is a floating point number appended with a
+     * unit such as "<code>14.5sp</code>".
+     * Available units are: px (pixels), dp (density-independent pixels),
+     * sp (scaled pixels based on preferred font size), in (inches), and
+     * mm (millimeters).
+     *
+     * @attr name com.demo.menu:tmv_text_padding_icon
+     */
+    public static final int TabMenuView_tmv_text_padding_icon=7;
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_text_size}
      * attribute's value can be found in the {@link #TabMenuView} array.

@@ -96,7 +96,7 @@ public class TabMenuView extends View {
             mTextColorNormal = a.getColor(R.styleable.TabMenuView_tmv_text_color_normal, mTextColorNormal);
             mTextColorSelected = a.getColor(R.styleable.TabMenuView_tmv_text_color_selected, mTextColorSelected);
             mBadgeBackgroundColor = a.getColor(R.styleable.TabMenuView_tmv_badge_color_background, mBadgeBackgroundColor);
-            mPadding = (int) a.getDimension(R.styleable.TabMenuView_tmv_badge_padding_icon, mPadding);
+            mPadding = (int) a.getDimension(R.styleable.TabMenuView_tmv_text_padding_icon, mPadding);
             isUseSystemSelectorBg = a.getBoolean(R.styleable.TabMenuView_tmv_background_selector_system, true);
 
         } catch (Exception e) {

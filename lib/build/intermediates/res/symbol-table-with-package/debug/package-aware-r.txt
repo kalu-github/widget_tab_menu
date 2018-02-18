@@ -251,12 +251,12 @@ int attr tml_click_scale 0x7f0400ed
 int attr tml_switch_alpha 0x7f0400ee
 int attr tmv_background_selector_system 0x7f0400ef
 int attr tmv_badge_color_background 0x7f0400f0
-int attr tmv_badge_padding_icon 0x7f0400f1
-int attr tmv_icon_normal 0x7f0400f2
-int attr tmv_icon_selected 0x7f0400f3
-int attr tmv_text 0x7f0400f4
-int attr tmv_text_color_normal 0x7f0400f5
-int attr tmv_text_color_selected 0x7f0400f6
+int attr tmv_icon_normal 0x7f0400f1
+int attr tmv_icon_selected 0x7f0400f2
+int attr tmv_text 0x7f0400f3
+int attr tmv_text_color_normal 0x7f0400f4
+int attr tmv_text_color_selected 0x7f0400f5
+int attr tmv_text_padding_icon 0x7f0400f6
 int attr tmv_text_size 0x7f0400f7
 int attr toolbarNavigationButtonStyle 0x7f0400f8
 int attr toolbarStyle 0x7f0400f9
@@ -1464,12 +1464,12 @@ int styleable TabMenuLayout_tml_switch_alpha 1
 int[] styleable TabMenuView { 0x7f0400ef, 0x7f0400f0, 0x7f0400f1, 0x7f0400f2, 0x7f0400f3, 0x7f0400f4, 0x7f0400f5, 0x7f0400f6, 0x7f0400f7 }
 int styleable TabMenuView_tmv_background_selector_system 0
 int styleable TabMenuView_tmv_badge_color_background 1
-int styleable TabMenuView_tmv_badge_padding_icon 2
-int styleable TabMenuView_tmv_icon_normal 3
-int styleable TabMenuView_tmv_icon_selected 4
-int styleable TabMenuView_tmv_text 5
-int styleable TabMenuView_tmv_text_color_normal 6
-int styleable TabMenuView_tmv_text_color_selected 7
+int styleable TabMenuView_tmv_icon_normal 2
+int styleable TabMenuView_tmv_icon_selected 3
+int styleable TabMenuView_tmv_text 4
+int styleable TabMenuView_tmv_text_color_normal 5
+int styleable TabMenuView_tmv_text_color_selected 6
+int styleable TabMenuView_tmv_text_padding_icon 7
 int styleable TabMenuView_tmv_text_size 8
 int[] styleable TextAppearance { 0x010103ac, 0x01010161, 0x01010162, 0x01010163, 0x01010164, 0x01010098, 0x0101009a, 0x0101009b, 0x01010095, 0x01010097, 0x01010096, 0x7f040071, 0x7f0400ce }
 int styleable TextAppearance_android_fontFamily 0

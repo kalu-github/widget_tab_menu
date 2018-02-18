@@ -46,7 +46,27 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
     <attr name="tmv_background_selector_system" format="boolean" />
 </declare-styleable>
 ```
+# 使用方法：
+```
+# 关联viewpager
+TabMenuLayout.setViewPager(mViewPger);
 
+# 设置 监听
+TabMenuLayout.setOnTabMenuChangedListener(new TabMenuLayout.OnTabMenuChangedListener() {
+            @Override
+            public void onTabMenuClick(boolean isSelected, int tabPosition) {
+                if(isSelected){
+                    Toast.makeText(getApplicationContext(), "当前菜单已被选中", Toast.LENGTH_SHORT).show();
+                }
+                Log.e("kalu", "onTabMenuClick ==> isSelected = " + isSelected + ", tabPosition = " + tabPosition);
+            }
+
+            @Override
+            public void onTabMenuSwitch(int tabPosition) {
+                Log.e("kalu", "onTabMenuSwitch ==> tabPosition = " + tabPosition);
+            }
+});
+```
 
 # Proguard-Rules
 ```

@@ -1,5 +1,6 @@
 package lib.kalu.tabmenu;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -9,10 +10,9 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import java.util.ArrayList;
 
 
 /**
@@ -21,27 +21,16 @@ import java.util.ArrayList;
  */
 public class TabMenuLayout extends LinearLayout {
 
-    private final ArrayList<TabMenuView> mTabViews = new ArrayList();
-    private final String STATE_INSTANCE = "STATE_INSTANCE";
-    private final String STATE_ITEM = "STATE_ITEM";
+    private final String BUNDLE_PARCELABLE = "BUNDLE_PARCELABLE";
     private final Paint paint = new Paint();
 
-    private ViewPager mViewPager;
     private OnTabMenuChangedListener listener;
-    /**
-     * 子View的数量
-     */
-    private int mChildCounts;
-    /**
-     * 当前的条目索引
-     */
-    private int mCurrentItem = 0;
 
     private int lineHeight;
+    private int defaultPosition = Activity.DEFAULT_KEYS_DISABLE;
 
-    private boolean isClicked = false;
-    private boolean isSwitchAlpha;
-    private boolean isSwitchScale;
+    private boolean isSwitchAlpha; // 透明度动画
+    private boolean isSwitchScale; // 选中动画
 
     /*********************************************************************************************/
 
@@ -60,69 +49,17 @@ public class TabMenuLayout extends LinearLayout {
         lineHeight = (int) (1 * scale + 0.5f);
         setPadding(0, lineHeight, 0, 0);
 
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TabMenuLayout);
+        TypedArray array = context.getApplicationContext().obtainStyledAttributes(attrs, R.styleable.TabMenuLayout);
 
         try {
             isSwitchAlpha = array.getBoolean(R.styleable.TabMenuLayout_tml_switch_alpha, false);
             isSwitchScale = array.getBoolean(R.styleable.TabMenuLayout_tml_click_scale, false);
+            defaultPosition = array.getInt(R.styleable.TabMenuLayout_tml_default_position, 0);
         } catch (Exception e) {
             // LogUtil.e("TabMenuLayout", e.getMessage(), e);
         } finally {
             array.recycle();
         }
-    }
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-
-        mChildCounts = getChildCount();
-
-        for (int i = 0; i < mChildCounts; i++) {
-
-            final int tabPosition = i;
-
-            View tab = getChildAt(tabPosition);
-            if (null != tab && tab instanceof TabMenuView) {
-                final TabMenuView tabView = (TabMenuView) getChildAt(i);
-                mTabViews.add(tabView);
-
-                tabView.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        isClicked = true;
-                        //点击前先重置所有按钮的状态
-                        resetState();
-                        tabView.setTag(tabView.getId(), true);
-                        tabView.setIconAlpha(1.0f);
-                        if (null != listener && null != mViewPager) {
-                            int currentItem = mViewPager.getCurrentItem();
-
-                            if (isSwitchScale && currentItem != tabPosition) {
-
-                                for (int j = 0; j < mChildCounts; j++) {
-                                    if (currentItem == j) {
-                                        tabView.beginAnim();
-                                    } else {
-                                        tabView.clearAnim();
-                                    }
-                                }
-                            }
-                            listener.onTabMenuClick(currentItem == tabPosition, tabPosition);
-                        }
-                        if (null != mViewPager) {
-                            //不能使用平滑滚动，否者颜色改变会乱
-                            mViewPager.setCurrentItem(tabPosition, false);
-                        }
-                    }
-                });
-            } else {
-                throw new IllegalArgumentException("TabMenuLayout的子View必须是TabMenuView");
-            }
-        }
-
-        mTabViews.get(mCurrentItem).setIconAlpha(1.0f);
     }
 
     @Override
@@ -138,86 +75,157 @@ public class TabMenuLayout extends LinearLayout {
 
     /*********************************************************************************************/
 
-    public void setViewPager(ViewPager mViewPager) {
-        this.mViewPager = mViewPager;
+    public void setViewPager(final ViewPager viewPager) {
+        if (null == viewPager) {
+            throw new NullPointerException("viewpager为null");
+        }
 
-        if (null != mViewPager) {
+        if (null == viewPager.getAdapter()) {
+            throw new NullPointerException("viewpager的adapter为null");
+        }
+        if (viewPager.getAdapter().getCount() != getChildCount()) {
+            throw new IllegalArgumentException("子View数量必须和ViewPager条目数量一致");
+        }
 
-            if (null == mViewPager.getAdapter()) {
-                throw new NullPointerException("viewpager的adapter为null");
-            }
-            if (mViewPager.getAdapter().getCount() != mChildCounts) {
-                throw new IllegalArgumentException("子View数量必须和ViewPager条目数量一致");
-            }
+        viewPager.setCurrentItem(defaultPosition, false);
 
-            //对ViewPager添加监听
-            mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        // 1.点击监听
+        for (int i = 0; i < getChildCount(); i++) {
 
-                    if (isSwitchAlpha) {
-                        //滑动时的透明度动画
-                        if (positionOffset > 0) {
-                            mTabViews.get(position).setIconAlpha(1 - positionOffset);
-                            mTabViews.get(position + 1).setIconAlpha(positionOffset);
+            final int tabPosition = i;
+
+            View tab = getChildAt(tabPosition);
+            if (null != tab && tab instanceof TabMenuView) {
+                final TabMenuView tabView = (TabMenuView) tab;
+
+                tabView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (null != listener) {
+                            View sub = getChildAt(tabPosition);
+                            if (null != sub && (sub instanceof TabMenuView)) {
+                                setTag(true);
+                                listener.onTabMenuChange(false, true, ((TabMenuView) sub).isHightLight(), tabPosition);
+                            }
                         }
-                        //滑动时保存当前按钮索引
-                        mCurrentItem = position;
+
+                        //不能使用平滑滚动，否者颜色改变会乱
+                        viewPager.setCurrentItem(tabPosition, false);
+                    }
+                });
+            } else {
+                throw new IllegalArgumentException("TabMenuLayout的子View必须是TabMenuView");
+            }
+        }
+
+        // 2.选中监听
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                if (positionOffset <= 0.f) return;
+                Log.e("kaluff", "onPageScrolled, position = " + position + ", positionOffset = " + positionOffset);
+
+                if (isSwitchAlpha) {
+                    //滑动时的透明度动画
+                    View sub = getChildAt(position);
+                    if (null != sub && (sub instanceof TabMenuView)) {
+                        TabMenuView menu = (TabMenuView) sub;
+                        menu.setStyle(1f - positionOffset);
+                    }
+
+                    View sub2 = getChildAt(position + 1);
+                    if (null != sub2 && (sub2 instanceof TabMenuView)) {
+                        TabMenuView menu = (TabMenuView) sub2;
+                        menu.setStyle(positionOffset);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                for (int j = 0; j < getChildCount(); j++) {
+                    Log.e("kaluff", "onPageSelected ==> position = " + position + ", index = " + j);
+
+                    View sub = getChildAt(j);
+                    if (null != sub && (sub instanceof TabMenuView)) {
+
+                        TabMenuView menu = (TabMenuView) sub;
+
+                        if (j == position) {
+                            menu.setStyle(true, isSwitchAlpha, 1f);
+                            if (isSwitchScale) {
+                                menu.beginAnim();
+                            }
+                        } else {
+                            menu.setStyle(false, isSwitchAlpha, 0f);
+                            if (isSwitchScale) {
+                                menu.clearAnim();
+                            }
+                        }
                     }
                 }
 
-                @Override
-                public void onPageSelected(int position) {
-                    resetState();
-                    mTabViews.get(position).setIconAlpha(1.0f);
-                    mCurrentItem = position;
-
-                    if (!isClicked && null != listener) {
-                        listener.onTabMenuSwitch(position);
+                if (null != listener) {
+                    Object tag = getTag();
+                    if (null != tag) {
+                        setTag(null);
+                    } else {
+                        listener.onTabMenuChange(true, false, false, position);
                     }
-
-                    isClicked = false;
                 }
+            }
 
-                @Override
-                public void onPageScrollStateChanged(int state) {
-                }
-            });
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+
+        for (int j = 0; j < getChildCount(); j++) {
+
+            View sub = getChildAt(j);
+            if (null != sub && (sub instanceof TabMenuView)) {
+                TabMenuView menu = (TabMenuView) sub;
+                menu.setStyle(j == defaultPosition, isSwitchAlpha, j == defaultPosition ? 1f : 0f);
+            }
         }
     }
+
+    /*********************************************************************************************/
 
     public void setOnTabMenuChangedListener(OnTabMenuChangedListener listner) {
         this.listener = listner;
     }
 
-    public TabMenuView getCurrentItemView() {
-        // sInit();
-        return mTabViews.get(mCurrentItem);
-    }
-
-    public TabMenuView getTabView(int tabIndex) {
-        // isInit();
-        return mTabViews.get(tabIndex);
-    }
-
     private void setBadgeMessage(int position, boolean isBadgePoint, int badgeNumber) {
 
-        TabMenuView menu = mTabViews.get(position);
-        if (null == menu) return;
+        if (position > (getChildCount() - 1)) return;
 
-        if (isBadgePoint) {
-            menu.showBadgePoint();
-        } else {
-            menu.showBadgeNumber(badgeNumber);
+        View sub = getChildAt(position);
+        if (null != sub && (sub instanceof TabMenuView)) {
+            TabMenuView menu = (TabMenuView) getChildAt(position);
+            if (isBadgePoint) {
+                menu.showBadgePoint();
+            } else {
+                menu.showBadgeNumber(badgeNumber);
+            }
         }
     }
 
     public void setBadgeMessageBackup(int position) {
 
-        TabMenuView menu = mTabViews.get(position);
-        if (null == menu) return;
-
-        setBadgeMessage(position, menu.getBadgeNumber());
+        View sub = getChildAt(position);
+        if (null != sub && (sub instanceof TabMenuView)) {
+            TabMenuView menu = (TabMenuView) getChildAt(position);
+            setBadgeMessage(position, menu.getBadgeNumber());
+        }
     }
 
     public void setBadgeMessage(int position, int badgeNumber) {
@@ -233,12 +241,13 @@ public class TabMenuLayout extends LinearLayout {
      */
     public void removeAllBadgeMessage() {
 
-        for (int i = 0; i < mTabViews.size(); i++) {
+        for (int i = 0; i < getChildCount(); i++) {
 
-            TabMenuView tabMenuView = mTabViews.get(i);
-            if (null == tabMenuView) continue;
-
-            tabMenuView.clearBadge();
+            View sub = getChildAt(i);
+            if (null != sub && (sub instanceof TabMenuView)) {
+                TabMenuView menu = (TabMenuView) sub;
+                menu.clearBadge();
+            }
         }
     }
 
@@ -247,53 +256,22 @@ public class TabMenuLayout extends LinearLayout {
      */
     public void removeCurrentBadgeMessage() {
 
-        TabMenuView menu = getCurrentItemView();
-        if (null == menu) return;
+        for (int i = 0; i < getChildCount(); i++) {
 
-        menu.clearBadge();
-    }
-
-    public void setTabSelected(int tabIndex) {
-        if (tabIndex < mChildCounts && tabIndex > -1) {
-            mTabViews.get(tabIndex).performClick();
-        } else {
-            throw new IllegalArgumentException("IndexOutOfBoundsException");
+            View sub = getChildAt(i);
+            if (null != sub && (sub instanceof TabMenuView)) {
+                TabMenuView menu = (TabMenuView) sub;
+                if (menu.isHightLight()) {
+                    menu.clearBadge();
+                }
+            }
         }
     }
-
-    /**
-     * 重置所有按钮的状态
-     */
-    private void resetState() {
-        for (int i = 0; i < mChildCounts; i++) {
-
-            TabMenuView menu = mTabViews.get(i);
-            if (null == menu) continue;
-
-            menu.setIconAlpha(0);
-            // menu.clearAnim();
-        }
-    }
-
-//    private void clratAnimExcept(int position) {
-//
-//        for (int i = 0; i < mChildCounts; i++) {
-//
-//            if (i == position) continue;
-//
-//            TabMenuView menu = mTabViews.get(i);
-//            if (null == menu) continue;
-//
-//          //  menu.setIconAlpha(0);
-//            menu.clearAnim();
-//        }
-//    }
 
     @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(STATE_INSTANCE, super.onSaveInstanceState());
-        bundle.putInt(STATE_ITEM, mCurrentItem);
+        bundle.putParcelable(BUNDLE_PARCELABLE, super.onSaveInstanceState());
         return bundle;
     }
 
@@ -301,16 +279,7 @@ public class TabMenuLayout extends LinearLayout {
     protected void onRestoreInstanceState(Parcelable state) {
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
-            mCurrentItem = bundle.getInt(STATE_ITEM);
-            if (null == mTabViews || mTabViews.size() == 0) {
-                super.onRestoreInstanceState(bundle.getParcelable(STATE_INSTANCE));
-                return;
-            }
-            //重置所有按钮状态
-            resetState();
-            //恢复点击的条目颜色
-            mTabViews.get(mCurrentItem).setIconAlpha(1.0f);
-            super.onRestoreInstanceState(bundle.getParcelable(STATE_INSTANCE));
+            super.onRestoreInstanceState(bundle.getParcelable(BUNDLE_PARCELABLE));
         } else {
             super.onRestoreInstanceState(state);
         }
@@ -321,18 +290,11 @@ public class TabMenuLayout extends LinearLayout {
     public interface OnTabMenuChangedListener {
 
         /**
-         * Tab点击监听
-         *
-         * @param isSelected 当前是否已经被选中
-         * @param position   位置标记
+         * @param isSwitch        是否左右滑动
+         * @param isClick         是否点击
+         * @param isClickSelected 是否点击选中
+         * @param position        位置标记
          */
-        void onTabMenuClick(boolean isSelected, int position);
-
-        /**
-         * ViewPager切换监听
-         *
-         * @param position 位置标记
-         */
-        void onTabMenuSwitch(int position);
+        void onTabMenuChange(boolean isSwitch, boolean isClick, boolean isClickSelected, int position);
     }
 }

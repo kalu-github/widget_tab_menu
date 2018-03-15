@@ -41,16 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         alphaTabsIndicator.setOnTabMenuChangedListener(new TabMenuLayout.OnTabMenuChangedListener() {
             @Override
-            public void onTabMenuClick(boolean isSelected, int tabPosition) {
-                if(isSelected){
-                    Toast.makeText(getApplicationContext(), "当前菜单已被选中", Toast.LENGTH_SHORT).show();
-                }
-                Log.e("kalu", "onTabMenuClick ==> isSelected = " + isSelected + ", tabPosition = " + tabPosition);
-            }
-
-            @Override
-            public void onTabMenuSwitch(int tabPosition) {
-                Log.e("kalu", "onTabMenuSwitch ==> tabPosition = " + tabPosition);
+            public void onTabMenuChange(boolean isSwitch, boolean isClick, boolean isClickSelected, int position) {
+                Log.e("kalu", "onTabMenuChange ==> isSwitch = " + isSwitch + ", isClick = " + isClick+ ", isClickSelected = " + isClickSelected+ ", position = " + position);
             }
         });
     }

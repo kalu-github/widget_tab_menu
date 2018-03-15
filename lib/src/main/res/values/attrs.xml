@@ -6,6 +6,8 @@
         <attr name="tml_switch_alpha" format="boolean" />
         <!-- 点击变化大小 -->
         <attr name="tml_click_scale" format="boolean" />
+        <!-- 默认选中位置 -->
+        <attr name="tml_default_position" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="TabMenuView">

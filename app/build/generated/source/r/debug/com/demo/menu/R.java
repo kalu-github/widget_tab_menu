@@ -1800,35 +1800,14 @@ public final class R {
      */
     public static final int tml_click_scale=0x7f0200ec;
     /**
-     * <p>May be a boolean value, such as "<code>true</code>" or
-     * "<code>false</code>".
+     * <p>May be an integer value, such as "<code>100</code>".
      */
-    public static final int tml_switch_alpha=0x7f0200ed;
-    /**
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
-     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
-     * "<code>#<i>aarrggbb</i></code>".
-     */
-    public static final int tmv_background_color_normal=0x7f0200ee;
-    /**
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
-     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
-     * "<code>#<i>aarrggbb</i></code>".
-     */
-    public static final int tmv_background_color_press=0x7f0200ef;
+    public static final int tml_default_position=0x7f0200ed;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int tmv_background_selector_system=0x7f0200f0;
+    public static final int tml_switch_alpha=0x7f0200ee;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1838,21 +1817,46 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int tmv_badge_color_background=0x7f0200f1;
+    public static final int tmv_background_color_normal=0x7f0200ef;
+    /**
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
+     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
+     * "<code>#<i>aarrggbb</i></code>".
+     */
+    public static final int tmv_background_color_press=0x7f0200f0;
+    /**
+     * <p>May be a boolean value, such as "<code>true</code>" or
+     * "<code>false</code>".
+     */
+    public static final int tmv_background_selector_system=0x7f0200f1;
+    /**
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
+     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
+     * "<code>#<i>aarrggbb</i></code>".
+     */
+    public static final int tmv_badge_color_background=0x7f0200f2;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int tmv_icon_normal=0x7f0200f2;
+    public static final int tmv_icon_normal=0x7f0200f3;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int tmv_icon_selected=0x7f0200f3;
+    public static final int tmv_icon_selected=0x7f0200f4;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1861,7 +1865,7 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int tmv_text=0x7f0200f4;
+    public static final int tmv_text=0x7f0200f5;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1871,7 +1875,7 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int tmv_text_color_normal=0x7f0200f5;
+    public static final int tmv_text_color_normal=0x7f0200f6;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1881,7 +1885,7 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int tmv_text_color_selected=0x7f0200f6;
+    public static final int tmv_text_color_selected=0x7f0200f7;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1893,7 +1897,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int tmv_text_padding_icon=0x7f0200f7;
+    public static final int tmv_text_padding_icon=0x7f0200f8;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1905,21 +1909,21 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int tmv_text_size=0x7f0200f8;
+    public static final int tmv_text_size=0x7f0200f9;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int toolbarNavigationButtonStyle=0x7f0200f9;
+    public static final int toolbarNavigationButtonStyle=0x7f0200fa;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int toolbarStyle=0x7f0200fa;
+    public static final int toolbarStyle=0x7f0200fb;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -1929,32 +1933,32 @@ public final class R {
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int tooltipForegroundColor=0x7f0200fb;
+    public static final int tooltipForegroundColor=0x7f0200fc;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int tooltipFrameBackground=0x7f0200fc;
+    public static final int tooltipFrameBackground=0x7f0200fd;
     /**
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int tooltipText=0x7f0200fd;
+    public static final int tooltipText=0x7f0200fe;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int track=0x7f0200fe;
+    public static final int track=0x7f0200ff;
     /**
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int trackTint=0x7f0200ff;
+    public static final int trackTint=0x7f020100;
     /**
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -1970,29 +1974,29 @@ public final class R {
      * <tr><td>src_over</td><td>3</td><td></td></tr>
      * </table>
      */
-    public static final int trackTintMode=0x7f020100;
+    public static final int trackTintMode=0x7f020101;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int voiceIcon=0x7f020101;
+    public static final int voiceIcon=0x7f020102;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int windowActionBar=0x7f020102;
+    public static final int windowActionBar=0x7f020103;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int windowActionBarOverlay=0x7f020103;
+    public static final int windowActionBarOverlay=0x7f020104;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int windowActionModeOverlay=0x7f020104;
+    public static final int windowActionModeOverlay=0x7f020105;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -2004,7 +2008,7 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      */
-    public static final int windowFixedHeightMajor=0x7f020105;
+    public static final int windowFixedHeightMajor=0x7f020106;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -2016,7 +2020,7 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      */
-    public static final int windowFixedHeightMinor=0x7f020106;
+    public static final int windowFixedHeightMinor=0x7f020107;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -2028,7 +2032,7 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      */
-    public static final int windowFixedWidthMajor=0x7f020107;
+    public static final int windowFixedWidthMajor=0x7f020108;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -2040,7 +2044,7 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      */
-    public static final int windowFixedWidthMinor=0x7f020108;
+    public static final int windowFixedWidthMinor=0x7f020109;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -2052,7 +2056,7 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      */
-    public static final int windowMinWidthMajor=0x7f020109;
+    public static final int windowMinWidthMajor=0x7f02010a;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -2064,12 +2068,12 @@ public final class R {
      * The % suffix always means a percentage of the base size;
      * the optional %p suffix provides a size relative to some parent container.
      */
-    public static final int windowMinWidthMinor=0x7f02010a;
+    public static final int windowMinWidthMinor=0x7f02010b;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int windowNoTitle=0x7f02010b;
+    public static final int windowNoTitle=0x7f02010c;
   }
   public static final class bool {
     public static final int abc_action_bar_embed_tabs=0x7f030000;
@@ -4440,10 +4444,10 @@ public final class R {
         0x7f0200bd, 0x7f0200be, 0x7f0200cb, 0x7f0200ce, 
         0x7f0200cf, 0x7f0200d0, 0x7f0200d1, 0x7f0200d2, 
         0x7f0200d3, 0x7f0200d4, 0x7f0200d5, 0x7f0200d6, 
-        0x7f0200d7, 0x7f0200f9, 0x7f0200fa, 0x7f0200fb, 
-        0x7f0200fc, 0x7f020102, 0x7f020103, 0x7f020104, 
-        0x7f020105, 0x7f020106, 0x7f020107, 0x7f020108, 
-        0x7f020109, 0x7f02010a, 0x7f02010b
+        0x7f0200d7, 0x7f0200fa, 0x7f0200fb, 0x7f0200fc, 
+        0x7f0200fd, 0x7f020103, 0x7f020104, 0x7f020105, 
+        0x7f020106, 0x7f020107, 0x7f020108, 0x7f020109, 
+        0x7f02010a, 0x7f02010b, 0x7f02010c
       };
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#actionBarDivider}
@@ -6804,7 +6808,7 @@ public final class R {
         0x010101e2, 0x010101e3, 0x010101e4, 0x010101e5, 
         0x0101026f, 0x7f02000d, 0x7f02001f, 0x7f020020, 
         0x7f020028, 0x7f020055, 0x7f020080, 0x7f020081, 
-        0x7f02009c, 0x7f0200b7, 0x7f0200fd
+        0x7f02009c, 0x7f0200b7, 0x7f0200fe
       };
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#actionLayout}
@@ -7404,7 +7408,7 @@ public final class R {
         0x7f020045, 0x7f020054, 0x7f02005e, 0x7f02007a, 
         0x7f020082, 0x7f020088, 0x7f0200ab, 0x7f0200ac, 
         0x7f0200b1, 0x7f0200b2, 0x7f0200c3, 0x7f0200c8, 
-        0x7f020101
+        0x7f020102
       };
     /**
      * <p>This symbol is the offset where the {@link android.R.attr#focusable}
@@ -7803,8 +7807,8 @@ public final class R {
     public static final int[] SwitchCompat={
         0x01010124, 0x01010125, 0x01010142, 0x7f0200b9, 
         0x7f0200bf, 0x7f0200c9, 0x7f0200ca, 0x7f0200cc, 
-        0x7f0200da, 0x7f0200db, 0x7f0200dc, 0x7f0200fe, 
-        0x7f0200ff, 0x7f020100
+        0x7f0200da, 0x7f0200db, 0x7f0200dc, 0x7f0200ff, 
+        0x7f020100, 0x7f020101
       };
     /**
      * <p>This symbol is the offset where the {@link android.R.attr#textOff}
@@ -7993,13 +7997,15 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #TabMenuLayout_tml_click_scale com.demo.menu:tml_click_scale}</code></td><td></td></tr>
+     * <tr><td><code>{@link #TabMenuLayout_tml_default_position com.demo.menu:tml_default_position}</code></td><td></td></tr>
      * <tr><td><code>{@link #TabMenuLayout_tml_switch_alpha com.demo.menu:tml_switch_alpha}</code></td><td></td></tr>
      * </table>
      * @see #TabMenuLayout_tml_click_scale
+     * @see #TabMenuLayout_tml_default_position
      * @see #TabMenuLayout_tml_switch_alpha
      */
     public static final int[] TabMenuLayout={
-        0x7f0200ec, 0x7f0200ed
+        0x7f0200ec, 0x7f0200ed, 0x7f0200ee
       };
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tml_click_scale}
@@ -8012,6 +8018,15 @@ public final class R {
      */
     public static final int TabMenuLayout_tml_click_scale=0;
     /**
+     * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tml_default_position}
+     * attribute's value can be found in the {@link #TabMenuLayout} array.
+     *
+     * <p>May be an integer value, such as "<code>100</code>".
+     *
+     * @attr name com.demo.menu:tml_default_position
+     */
+    public static final int TabMenuLayout_tml_default_position=1;
+    /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tml_switch_alpha}
      * attribute's value can be found in the {@link #TabMenuLayout} array.
      *
@@ -8020,7 +8035,7 @@ public final class R {
      *
      * @attr name com.demo.menu:tml_switch_alpha
      */
-    public static final int TabMenuLayout_tml_switch_alpha=1;
+    public static final int TabMenuLayout_tml_switch_alpha=2;
     /**
      * Attributes that can be used with a TabMenuView.
      * <p>Includes the following attributes:</p>
@@ -8053,9 +8068,9 @@ public final class R {
      * @see #TabMenuView_tmv_text_size
      */
     public static final int[] TabMenuView={
-        0x7f0200ee, 0x7f0200ef, 0x7f0200f0, 0x7f0200f1, 
-        0x7f0200f2, 0x7f0200f3, 0x7f0200f4, 0x7f0200f5, 
-        0x7f0200f6, 0x7f0200f7, 0x7f0200f8
+        0x7f0200ef, 0x7f0200f0, 0x7f0200f1, 0x7f0200f2, 
+        0x7f0200f3, 0x7f0200f4, 0x7f0200f5, 0x7f0200f6, 
+        0x7f0200f7, 0x7f0200f8, 0x7f0200f9
       };
     /**
      * <p>This symbol is the offset where the {@link com.demo.menu.R.attr#tmv_background_color_normal}

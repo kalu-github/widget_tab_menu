@@ -16,7 +16,8 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         app:tml_click_scale="true"
-        app:tml_switch_alpha="true">
+        app:tml_switch_alpha="true"
+        app:tml_default_position="0">
 
         <lib.kalu.tabmenu.TabMenuView
             android:layout_width="0dp"
@@ -28,9 +29,7 @@
             app:tmv_text="微信"
             app:tmv_text_color_normal="#999999"
             app:tmv_text_color_selected="#46c01b"
-            app:tmv_text_size="11sp"
-            app:tmv_background_color_normal="@android:color/white"
-            app:tmv_background_color_press="@android:color/black"/>
+            app:tmv_text_size="11sp"/>
 
         <lib.kalu.tabmenu.TabMenuView
             android:layout_width="0dp"

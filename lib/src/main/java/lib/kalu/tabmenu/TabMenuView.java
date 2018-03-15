@@ -41,7 +41,10 @@ public class TabMenuView extends View {
     private int mTextSize = 12;                   //描述文本的默认字体大小 12sp
     private int mPadding = 10;                      //文字和图片之间的距离 5dp
 
-    private float mAlpha;                         //当前的透明度
+    private boolean isHightLight = false; // 是否选中
+    private boolean isSwitchAlpha = false;
+
+    private float mAlpha = 0;                         //当前的透明度
 
     private int mBadgeBackgroundColor = 0xFFFF0000;       //默认红颜色
 
@@ -204,24 +207,22 @@ public class TabMenuView extends View {
             FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
             FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
             FIN_PAINT.setFakeBoldText(true);
-            //绘制原始文字,setAlpha必须放在paint的属性最后设置，否则不起作用
-            FIN_PAINT.setColor(mTextColorNormal);
-            FIN_PAINT.setAlpha(255 - alpha);
             FIN_PAINT.setTextAlign(Paint.Align.CENTER);
-
             final int textX = mTextBound.centerX();
             final int textY = mTextBound.bottom - mTextBound.height() * 1 / 3;
-
-            //由于在该方法中，y轴坐标代表的是baseLine的值，经测试，mTextBound.height() + mFmi.bottom 就是字体的高
-            //所以在最后绘制前，修正偏移量，将文字向上修正 mFmi.bottom / 2 即可实现垂直居中
-            canvas.drawText(mText, textX, textY, FIN_PAINT);
-            // Log.e("kalu44444", mTextBound.left + ", " + mTextBound.top + ", " + mTextBound.right + ", " + mTextBound.bottom);
-
-            //绘制变色文字，setAlpha必须放在paint的属性最后设置，否则不起作用
-            FIN_PAINT.setColor(mTextColorSelected);
-            FIN_PAINT.setAlpha(alpha);
-            canvas.drawText(mText, textX, textY, FIN_PAINT);
-            // Log.e("kalu6", "onDraw ==> 画文字");
+            if (isSwitchAlpha) {
+                FIN_PAINT.setColor(mTextColorNormal);
+                FIN_PAINT.setAlpha(255 - alpha);
+                canvas.drawText(mText, textX, textY, FIN_PAINT);
+                FIN_PAINT.setColor(mTextColorSelected);
+                FIN_PAINT.setAlpha(alpha);
+                canvas.drawText(mText, textX, textY, FIN_PAINT);
+                Log.e("kaluff", "文字 - 过度效果");
+            } else {
+                FIN_PAINT.setColor(isHightLight ? mTextColorSelected : mTextColorNormal);
+                canvas.drawText(mText, textX, textY, FIN_PAINT);
+                Log.e("kaluff", "文字 - 普通效果");
+            }
         }
 
         // 2.画图标
@@ -257,22 +258,29 @@ public class TabMenuView extends View {
             FIN_PAINT.setDither(true);
             FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
             FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
-            FIN_PAINT.setAlpha(255 - alpha);
-            canvas.drawBitmap(mIconNormal, null, mIconRect, FIN_PAINT);
-            FIN_PAINT.reset();
-            FIN_PAINT.clearShadowLayer();
-            FIN_PAINT.setAntiAlias(true);
-            FIN_PAINT.setFilterBitmap(true);
-            FIN_PAINT.setDither(true);
-            FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
-            FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
-            FIN_PAINT.setAlpha(alpha); //setAlpha必须放在paint的属性最后设置，否则不起作用
-            canvas.drawBitmap(mIconSelected, null, mIconRect, FIN_PAINT);
-            // Log.e("kalu6", "onDraw ==> 画图标");
+
+            // 是否类似微信icon透明度动画
+            if (isSwitchAlpha) {
+                FIN_PAINT.setAlpha(255 - alpha);
+                canvas.drawBitmap(mIconNormal, null, mIconRect, FIN_PAINT);
+                FIN_PAINT.reset();
+                FIN_PAINT.clearShadowLayer();
+                FIN_PAINT.setAntiAlias(true);
+                FIN_PAINT.setFilterBitmap(true);
+                FIN_PAINT.setDither(true);
+                FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
+                FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
+                FIN_PAINT.setAlpha(alpha); //setAlpha必须放在paint的属性最后设置，否则不起作用
+                canvas.drawBitmap(mIconSelected, null, mIconRect, FIN_PAINT);
+                Log.e("kalu6", "onDraw ==> 画图标, 高级");
+            } else {
+                Log.e("kalu6", "onDraw ==> 画图标, 普通");
+                canvas.drawBitmap(isHightLight ? mIconSelected : mIconNormal, null, mIconRect, FIN_PAINT);
+            }
         }
 
-        // 3.未读消息
-        // 显示小圆点
+//         3.未读消息
+//         显示小圆点
         if (mBadgeNumber == -1) {
 
             FIN_PAINT.reset();
@@ -352,10 +360,15 @@ public class TabMenuView extends View {
         }
     }
 
+    private final float dp2px(Context context, float dipValue) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale);
+    }
+
     /**
      * 显示小圆点
      */
-    public void showBadgePoint() {
+    public final void showBadgePoint() {
         mBadgeNumber = -1;
         if (Looper.getMainLooper() == Looper.myLooper()) {
             invalidate();
@@ -369,7 +382,7 @@ public class TabMenuView extends View {
      *
      * @param badgeNum
      */
-    public void showBadgeNumber(int badgeNum) {
+    public final void showBadgeNumber(int badgeNum) {
         mBadgeNumber = badgeNum;
         if (Looper.getMainLooper() == Looper.myLooper()) {
             invalidate();
@@ -381,7 +394,7 @@ public class TabMenuView extends View {
     /**
      * 清除消息
      */
-    protected void clearBadge() {
+    protected final void clearBadge() {
         mBadgeNumber = 0;
         if (Looper.getMainLooper() == Looper.myLooper()) {
             invalidate();
@@ -390,19 +403,30 @@ public class TabMenuView extends View {
         }
     }
 
-    public int getBadgeNumber() {
+    public final int getBadgeNumber() {
         return mBadgeNumber;
     }
 
     /**
      * @param alpha 对外提供的设置透明度的方法，取值 0.0 ~ 1.0
      */
-    public void setIconAlpha(float alpha) {
+    public final void setStyle(float alpha) {
+        setStyle(isHightLight, isSwitchAlpha, alpha);
+    }
+
+    protected final void setStyle(boolean isHightLight, boolean isSwitchAlpha) {
+        setStyle(isHightLight, isSwitchAlpha, 0f);
+    }
+
+    protected final void setStyle(boolean isHightLight, boolean isSwitchAlpha, float alpha) {
+
         if (alpha < 0 || alpha > 1) {
             throw new IllegalArgumentException("透明度必须是 0.0 - 1.0");
         }
-        mAlpha = alpha;
+        this.mAlpha = alpha;
 
+        this.isHightLight = isHightLight;
+        this.isSwitchAlpha = isSwitchAlpha;
         if (Looper.getMainLooper() == Looper.myLooper()) {
             invalidate();
         } else {
@@ -410,22 +434,24 @@ public class TabMenuView extends View {
         }
     }
 
-    private final float dp2px(Context context, float dipValue) {
-        float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale);
+    /**
+     * 高亮显示
+     */
+    protected final boolean isHightLight() {
+        return this.isHightLight;
     }
 
-    protected void beginAnim() {
+    protected final void beginAnim() {
 
         if (mHandler.hasMessages(1)) return;
 
-      //  Log.e("alu", "beginAnim");
+        //  Log.e("alu", "beginAnim");
         Message obtain = Message.obtain();
         obtain.what = 1;
         mHandler.sendMessage(obtain);
     }
 
-    protected void clearAnim() {
+    protected final void clearAnim() {
 
         if (mHandler.hasMessages(1)) {
             //mHandler.removeCallbacksAndMessages(null);
@@ -435,7 +461,7 @@ public class TabMenuView extends View {
             mIconRect.top = top1;
             mIconRect.bottom = bottom1;
 
-           // Log.e("alu", "clearAnim");
+            // Log.e("alu", "clearAnim");
 
             if (Looper.getMainLooper() == Looper.myLooper()) {
                 invalidate();
@@ -461,7 +487,7 @@ public class TabMenuView extends View {
             mHandler.sendMessageDelayed(obtain, 5);
         } else if (count <= 10) {
 
-           // Log.e("alu", "放大");
+            // Log.e("alu", "放大");
             final int temp1 = mIconRect.width() / 14;
             mIconRect.left = mIconRect.left - temp1;
             mIconRect.top = mIconRect.top - temp1;
@@ -489,7 +515,7 @@ public class TabMenuView extends View {
             mHandler.sendMessageDelayed(obtain, 5);
         } else {
 
-           // Log.e("alu", "复位");
+            // Log.e("alu", "复位");
             mIconRect.left = left1;
             mIconRect.right = right1;
             mIconRect.top = top1;

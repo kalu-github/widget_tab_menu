@@ -3,7 +3,7 @@
     package="lib.kalu.tabmenu"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionCode="11"
-    android:versionName="1.7" >
+    android:versionName="1.8" >
 
     <uses-sdk
         android:minSdkVersion="14"

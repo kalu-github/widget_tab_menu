@@ -48,6 +48,8 @@ public final class MeViewPager extends ViewPager {
     <attr name="tml_switch_alpha" format="boolean" />
     <!-- 点击变化大小 -->
     <attr name="tml_click_scale" format="boolean" />
+    <!-- 默认选中位置 -->
+    <attr name="tml_default_position" format="integer" />
 </declare-styleable>
 
 <declare-styleable name="TabMenuView">
@@ -71,6 +73,18 @@ public final class MeViewPager extends ViewPager {
     <attr name="tmv_background_selector_system" format="boolean" />
 </declare-styleable>
 ```
+```
+public interface OnTabMenuChangedListener {
+
+        /**
+         * @param isSwitch        是否左右滑动
+         * @param isClick         是否点击
+         * @param isClickSelected 是否点击选中
+         * @param position        位置标记
+         */
+        void onTabMenuChange(boolean isSwitch, boolean isClick, boolean isClickSelected, int position);
+    }
+```
 # 使用方法：
 ```
 # 关联viewpager
@@ -79,18 +93,10 @@ TabMenuLayout.setViewPager(mViewPger);
 # 设置 监听
 TabMenuLayout.setOnTabMenuChangedListener(new TabMenuLayout.OnTabMenuChangedListener() {
             @Override
-            public void onTabMenuClick(boolean isSelected, int tabPosition) {
-                if(isSelected){
-                    Toast.makeText(getApplicationContext(), "当前菜单已被选中", Toast.LENGTH_SHORT).show();
-                }
-                Log.e("kalu", "onTabMenuClick ==> isSelected = " + isSelected + ", tabPosition = " + tabPosition);
+            public void onTabMenuChange(boolean isSwitch, boolean isClick, boolean isClickSelected, int position) {
+                Log.e("kalu", "onTabMenuChange ==> isSwitch = " + isSwitch + ", isClick = " + isClick+ ", isClickSelected = " +            isClickSelected+ ", position = " + position);
             }
-
-            @Override
-            public void onTabMenuSwitch(int tabPosition) {
-                Log.e("kalu", "onTabMenuSwitch ==> tabPosition = " + tabPosition);
-            }
-});
+        });
 ```
 
 # Proguard-Rules

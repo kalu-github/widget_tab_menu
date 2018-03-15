@@ -419,7 +419,7 @@ public class TabMenuView extends View {
 
         if (mHandler.hasMessages(1)) return;
 
-        Log.e("alu", "beginAnim");
+      //  Log.e("alu", "beginAnim");
         Message obtain = Message.obtain();
         obtain.what = 1;
         mHandler.sendMessage(obtain);
@@ -435,7 +435,7 @@ public class TabMenuView extends View {
             mIconRect.top = top1;
             mIconRect.bottom = bottom1;
 
-            Log.e("alu", "clearAnim");
+           // Log.e("alu", "clearAnim");
 
             if (Looper.getMainLooper() == Looper.myLooper()) {
                 invalidate();
@@ -449,7 +449,7 @@ public class TabMenuView extends View {
 
         if (count <= 5) {
 
-            Log.e("alu", "缩小");
+            //Log.e("alu", "缩小");
             final int temp1 = mIconRect.width() / 14;
             mIconRect.left = mIconRect.left + temp1;
             mIconRect.top = mIconRect.top + temp1;
@@ -461,7 +461,7 @@ public class TabMenuView extends View {
             mHandler.sendMessageDelayed(obtain, 5);
         } else if (count <= 10) {
 
-            Log.e("alu", "放大");
+           // Log.e("alu", "放大");
             final int temp1 = mIconRect.width() / 14;
             mIconRect.left = mIconRect.left - temp1;
             mIconRect.top = mIconRect.top - temp1;
@@ -489,7 +489,7 @@ public class TabMenuView extends View {
             mHandler.sendMessageDelayed(obtain, 5);
         } else {
 
-            Log.e("alu", "复位");
+           // Log.e("alu", "复位");
             mIconRect.left = left1;
             mIconRect.right = right1;
             mIconRect.top = top1;

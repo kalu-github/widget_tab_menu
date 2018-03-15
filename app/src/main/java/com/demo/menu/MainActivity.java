@@ -1,12 +1,15 @@
 package com.demo.menu;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -94,6 +97,27 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPageScrollStateChanged(int state) {
+        }
+    }
+
+    public final class MeViewPager extends ViewPager {
+
+        public MeViewPager(Context context) {
+            super(context);
+        }
+
+        public MeViewPager(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+
+        @Override
+        public boolean onTouchEvent(MotionEvent arg0) {
+            return false;
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(MotionEvent arg0) {
+            return false;
         }
     }
 }

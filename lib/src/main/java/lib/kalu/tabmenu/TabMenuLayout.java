@@ -59,7 +59,6 @@ public class TabMenuLayout extends LinearLayout {
         float scale = context.getResources().getDisplayMetrics().density;
         lineHeight = (int) (1 * scale + 0.5f);
         setPadding(0, lineHeight, 0, 0);
-        setBackgroundColor(Color.WHITE);
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TabMenuLayout);
 

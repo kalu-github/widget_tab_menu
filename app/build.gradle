@@ -24,8 +24,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    // implementation project(':lib')
+    implementation project(':lib')
 
     implementation 'com.android.support:appcompat-v7:26.+'
-    implementation 'lib.kalu.tabmenu:tabmenulayout:1.4'
+    // implementation 'lib.kalu.tabmenu:tabmenulayout:1.4'
 }

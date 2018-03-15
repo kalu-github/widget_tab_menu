@@ -27,5 +27,9 @@
         <attr name="tmv_text_padding_icon" format="dimension|reference" />
         <!-- 是否使用系统水波纹背景 -->
         <attr name="tmv_background_selector_system" format="boolean" />
+        <!-- 背景颜色, 默认 -->
+        <attr name="tmv_background_color_normal" format="color|reference" />
+        <!-- 背景颜色, 按压 -->
+        <attr name="tmv_background_color_press" format="color|reference" />
     </declare-styleable>
 </resources>

@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -57,6 +56,10 @@ public class TabMenuView extends View {
     private final Rect mIconAvailableRect = new Rect();
     // 图标真正的绘制区域
     private final Rect mIconDrawRect = new Rect();
+    // 背景颜色, 默认
+    private int mBackgroundColorNormal = 0xFFFFFFFF;
+    // 背景颜色, 按压
+    private int mBackgroundColorPress = 0xFFFFFFFF;
 
     /***************************************************************************************/
 
@@ -97,8 +100,10 @@ public class TabMenuView extends View {
             mTextColorSelected = a.getColor(R.styleable.TabMenuView_tmv_text_color_selected, mTextColorSelected);
             mBadgeBackgroundColor = a.getColor(R.styleable.TabMenuView_tmv_badge_color_background, mBadgeBackgroundColor);
             mPadding = (int) a.getDimension(R.styleable.TabMenuView_tmv_text_padding_icon, mPadding);
-            isUseSystemSelectorBg = a.getBoolean(R.styleable.TabMenuView_tmv_background_selector_system, true);
+            isUseSystemSelectorBg = a.getBoolean(R.styleable.TabMenuView_tmv_background_selector_system, false);
 
+            mBackgroundColorNormal = a.getColor(R.styleable.TabMenuView_tmv_background_color_normal, mBackgroundColorNormal);
+            mBackgroundColorPress = a.getColor(R.styleable.TabMenuView_tmv_background_color_press, mBackgroundColorPress);
         } catch (Exception e) {
         } finally {
             a.recycle();
@@ -114,11 +119,11 @@ public class TabMenuView extends View {
             // 按压背景色
             StateListDrawable drawable = new StateListDrawable();
             ColorDrawable colorDrawable1 = new ColorDrawable();
-            colorDrawable1.setColor(Color.GRAY);
+            colorDrawable1.setColor(mBackgroundColorPress);
             drawable.addState(new int[]{android.R.attr.state_focused}, colorDrawable1);
             drawable.addState(new int[]{android.R.attr.state_enabled, android.R.attr.state_pressed}, colorDrawable1);
             ColorDrawable colorDrawable2 = new ColorDrawable();
-            colorDrawable2.setColor(Color.WHITE);
+            colorDrawable2.setColor(mBackgroundColorNormal);
             drawable.addState(new int[0], colorDrawable2);
             setBackgroundDrawable(drawable);
         }
@@ -179,6 +184,7 @@ public class TabMenuView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        // Log.e("kalu6", "onDraw ==> id = " + getClass().getCanonicalName());
 
         final int alpha = (int) Math.ceil(mAlpha * 255);
 
@@ -210,6 +216,7 @@ public class TabMenuView extends View {
             FIN_PAINT.setColor(mTextColorSelected);
             FIN_PAINT.setAlpha(alpha);
             canvas.drawText(mText, textX, textY, FIN_PAINT);
+            // Log.e("kalu6", "onDraw ==> 画文字");
         }
 
         // 2.画图标
@@ -249,6 +256,7 @@ public class TabMenuView extends View {
             FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
             FIN_PAINT.setAlpha(alpha); //setAlpha必须放在paint的属性最后设置，否则不起作用
             canvas.drawBitmap(mIconSelected, null, mIconDrawRect, FIN_PAINT);
+            // Log.e("kalu6", "onDraw ==> 画图标");
         }
 
         // 3.未读消息
@@ -273,6 +281,7 @@ public class TabMenuView extends View {
             float width = dp2px(getContext(), i);
             RectF messageRectF = new RectF(left, top, left + width, top + width);
             canvas.drawOval(messageRectF, FIN_PAINT);
+            // Log.e("kalu6", "onDraw ==> 画小圆点");
         }
         // 显示消息数量(超过99显示99+)
         else if (mBadgeNumber > 0) {
@@ -281,54 +290,53 @@ public class TabMenuView extends View {
             int i = getMeasuredWidth() / 14;
             int j = getMeasuredHeight() / 9;
             i = i >= j ? j : i;
-            if (mBadgeNumber > 0) {
 
-                FIN_PAINT.reset();
-                FIN_PAINT.clearShadowLayer();
-                FIN_PAINT.setAntiAlias(true);
-                FIN_PAINT.setFilterBitmap(true);
-                FIN_PAINT.setDither(true);
-                FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
-                FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
-                FIN_PAINT.setColor(mBadgeBackgroundColor);
-                String number = mBadgeNumber > 99 ? "99+" : String.valueOf(mBadgeNumber);
-                float textSize = i / 1.5f == 0 ? 5 : i / 1.5f;
-                int width;
-                int hight = (int) dp2px(context, i);
-                Bitmap bitmap;
-                if (number.length() == 1) {
-                    width = (int) dp2px(context, i);
-                    bitmap = Bitmap.createBitmap(width, hight, Bitmap.Config.ARGB_8888);
-                } else if (number.length() == 2) {
-                    width = (int) dp2px(context, i + 5);
-                    bitmap = Bitmap.createBitmap(width, hight, Bitmap.Config.ARGB_8888);
-                } else {
-                    width = (int) dp2px(context, i + 8);
-                    bitmap = Bitmap.createBitmap(width, width, Bitmap.Config.ARGB_8888);
-                }
-                Canvas canvasMessages = new Canvas(bitmap);
-                RectF messageRectF = new RectF(0, 0, width, hight);
-                canvasMessages.drawRoundRect(messageRectF, 50, 50, FIN_PAINT); //画椭圆
-
-                FIN_PAINT.reset();
-                FIN_PAINT.clearShadowLayer();
-                FIN_PAINT.setAntiAlias(true);
-                FIN_PAINT.setFilterBitmap(true);
-                FIN_PAINT.setDither(true);
-                FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
-                FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
-                FIN_PAINT.setColor(Color.WHITE);
-                FIN_PAINT.setTextSize(dp2px(context, textSize));
-                FIN_PAINT.setTextAlign(Paint.Align.CENTER);
-                Paint.FontMetrics fontMetrics = FIN_PAINT.getFontMetrics();
-                float x = width / 2f;
-                float y = hight / 2f - fontMetrics.descent + (fontMetrics.descent - fontMetrics.ascent) / 2;
-                canvasMessages.drawText(number, x, y, FIN_PAINT);
-                float left = getMeasuredWidth() / 10 * 6f;
-                float top = dp2px(context, 5);
-                canvas.drawBitmap(bitmap, left, top, null);
-                bitmap.recycle();
+            FIN_PAINT.reset();
+            FIN_PAINT.clearShadowLayer();
+            FIN_PAINT.setAntiAlias(true);
+            FIN_PAINT.setFilterBitmap(true);
+            FIN_PAINT.setDither(true);
+            FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
+            FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
+            FIN_PAINT.setColor(mBadgeBackgroundColor);
+            String number = mBadgeNumber > 99 ? "99+" : String.valueOf(mBadgeNumber);
+            float textSize = i / 1.5f == 0 ? 5 : i / 1.5f;
+            int width;
+            int hight = (int) dp2px(context, i);
+            Bitmap bitmap;
+            if (number.length() == 1) {
+                width = (int) dp2px(context, i);
+                bitmap = Bitmap.createBitmap(width, hight, Bitmap.Config.ARGB_8888);
+            } else if (number.length() == 2) {
+                width = (int) dp2px(context, i + 5);
+                bitmap = Bitmap.createBitmap(width, hight, Bitmap.Config.ARGB_8888);
+            } else {
+                width = (int) dp2px(context, i + 8);
+                bitmap = Bitmap.createBitmap(width, width, Bitmap.Config.ARGB_8888);
             }
+            Canvas canvasMessages = new Canvas(bitmap);
+            RectF messageRectF = new RectF(0, 0, width, hight);
+            canvasMessages.drawRoundRect(messageRectF, 50, 50, FIN_PAINT); //画椭圆
+
+            FIN_PAINT.reset();
+            FIN_PAINT.clearShadowLayer();
+            FIN_PAINT.setAntiAlias(true);
+            FIN_PAINT.setFilterBitmap(true);
+            FIN_PAINT.setDither(true);
+            FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
+            FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
+            FIN_PAINT.setColor(Color.WHITE);
+            FIN_PAINT.setTextSize(dp2px(context, textSize));
+            FIN_PAINT.setTextAlign(Paint.Align.CENTER);
+            Paint.FontMetrics fontMetrics = FIN_PAINT.getFontMetrics();
+            float x = width / 2f;
+            float y = hight / 2f - fontMetrics.descent + (fontMetrics.descent - fontMetrics.ascent) / 2;
+            canvasMessages.drawText(number, x, y, FIN_PAINT);
+            float left = getMeasuredWidth() / 10 * 6f;
+            float top = dp2px(context, 5);
+            canvas.drawBitmap(bitmap, left, top, null);
+            bitmap.recycle();
+            // Log.e("kalu6", "onDraw ==> 画消息数量");
         }
     }
 
@@ -337,7 +345,11 @@ public class TabMenuView extends View {
      */
     public void showBadgePoint() {
         mBadgeNumber = -1;
-        invalidate();
+        if (Looper.getMainLooper() == Looper.myLooper()) {
+            invalidate();
+        } else {
+            postInvalidate();
+        }
     }
 
     /**
@@ -347,10 +359,10 @@ public class TabMenuView extends View {
      */
     public void showBadgeNumber(int badgeNum) {
         mBadgeNumber = badgeNum;
-        if (badgeNum > 0) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             invalidate();
         } else {
-            invalidate();
+            postInvalidate();
         }
     }
 
@@ -359,7 +371,11 @@ public class TabMenuView extends View {
      */
     protected void clearBadge() {
         mBadgeNumber = 0;
-        invalidate();
+        if (Looper.getMainLooper() == Looper.myLooper()) {
+            invalidate();
+        } else {
+            postInvalidate();
+        }
     }
 
     public int getBadgeNumber() {

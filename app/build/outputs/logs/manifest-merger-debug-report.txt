@@ -3,7 +3,7 @@ manifest
 ADDED from D:\Android\space\TabMenuLayout_v1.0\app\src\main\AndroidManifest.xml:2:1-20:12
 INJECTED from D:\Android\space\TabMenuLayout_v1.0\app\src\main\AndroidManifest.xml:2:1-20:12
 INJECTED from D:\Android\space\TabMenuLayout_v1.0\app\src\main\AndroidManifest.xml:2:1-20:12
-MERGED from [lib.kalu.tabmenu:tabmenulayout:1.4] D:\Android\gradle\caches\transforms-1\files-1.1\tabmenulayout-1.4.aar\80f700fb1a8b8d3f559195eb9df45b73\AndroidManifest.xml:2:1-12:12
+MERGED from [:lib] D:\Android\space\TabMenuLayout_v1.0\lib\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] D:\Android\gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\d137f54ad054b0d80f1cc73c422fb4ee\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] D:\Android\gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\66b0dd942c450ef9cab23bbc73a65ccd\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-vector-drawable:26.1.0] D:\Android\gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\4f269e1652c6c9e40f35d37cbc14c871\AndroidManifest.xml:17:1-28:12
@@ -78,8 +78,8 @@ uses-sdk
 INJECTED from D:\Android\space\TabMenuLayout_v1.0\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Android\space\TabMenuLayout_v1.0\app\src\main\AndroidManifest.xml
 INJECTED from D:\Android\space\TabMenuLayout_v1.0\app\src\main\AndroidManifest.xml
-MERGED from [lib.kalu.tabmenu:tabmenulayout:1.4] D:\Android\gradle\caches\transforms-1\files-1.1\tabmenulayout-1.4.aar\80f700fb1a8b8d3f559195eb9df45b73\AndroidManifest.xml:8:5-10:41
-MERGED from [lib.kalu.tabmenu:tabmenulayout:1.4] D:\Android\gradle\caches\transforms-1\files-1.1\tabmenulayout-1.4.aar\80f700fb1a8b8d3f559195eb9df45b73\AndroidManifest.xml:8:5-10:41
+MERGED from [:lib] D:\Android\space\TabMenuLayout_v1.0\lib\build\intermediates\manifests\full\debug\AndroidManifest.xml:8:5-10:41
+MERGED from [:lib] D:\Android\space\TabMenuLayout_v1.0\lib\build\intermediates\manifests\full\debug\AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:appcompat-v7:26.1.0] D:\Android\gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\d137f54ad054b0d80f1cc73c422fb4ee\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:appcompat-v7:26.1.0] D:\Android\gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\d137f54ad054b0d80f1cc73c422fb4ee\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] D:\Android\gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\66b0dd942c450ef9cab23bbc73a65ccd\AndroidManifest.xml:20:5-44

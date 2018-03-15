@@ -25,9 +25,12 @@
             android:padding="5dp"
             app:tmv_icon_normal="@mipmap/home_normal"
             app:tmv_icon_selected="@mipmap/home_selected"
+            app:tmv_text="微信"
             app:tmv_text_color_normal="#999999"
             app:tmv_text_color_selected="#46c01b"
-            app:tmv_text_size="11sp" />
+            app:tmv_text_size="11sp"
+            app:tmv_background_color_normal="@android:color/white"
+            app:tmv_background_color_press="@android:color/black"/>
 
         <lib.kalu.tabmenu.TabMenuView
             android:layout_width="0dp"
@@ -36,6 +39,7 @@
             android:padding="5dp"
             app:tmv_icon_normal="@mipmap/category_normal"
             app:tmv_icon_selected="@mipmap/category_selected"
+            app:tmv_text="通讯录"
             app:tmv_text_color_normal="#999999"
             app:tmv_text_color_selected="#46c01b"
             app:tmv_text_size="11sp" />
@@ -47,6 +51,7 @@
             android:padding="5dp"
             app:tmv_icon_normal="@mipmap/service_normal"
             app:tmv_icon_selected="@mipmap/service_selected"
+            app:tmv_text="发现"
             app:tmv_text_color_normal="#999999"
             app:tmv_text_color_selected="#46c01b"
             app:tmv_text_size="11sp" />
@@ -59,6 +64,7 @@
             android:padding="5dp"
             app:tmv_icon_normal="@mipmap/mine_normal"
             app:tmv_icon_selected="@mipmap/mine_selected"
+            app:tmv_text="我"
             app:tmv_text_color_normal="#999999"
             app:tmv_text_color_selected="#46c01b"
             app:tmv_text_size="11sp" />

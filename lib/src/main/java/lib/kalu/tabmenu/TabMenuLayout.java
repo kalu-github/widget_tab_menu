@@ -99,11 +99,14 @@ public class TabMenuLayout extends LinearLayout {
                         if (null != listener && null != mViewPager) {
                             int currentItem = mViewPager.getCurrentItem();
 
-                            if (isSwitchScale) {
+                            if (isSwitchScale && currentItem != tabPosition) {
 
-                                if (currentItem != tabPosition) {
-                                   // clratAnimExcept(currentItem);
-                                    tabView.beginAnim();
+                                for (int j = 0; j < mChildCounts; j++) {
+                                    if (currentItem == j) {
+                                        tabView.beginAnim();
+                                    } else {
+                                        tabView.clearAnim();
+                                    }
                                 }
                             }
                             listener.onTabMenuClick(currentItem == tabPosition, tabPosition);
@@ -268,7 +271,7 @@ public class TabMenuLayout extends LinearLayout {
             if (null == menu) continue;
 
             menu.setIconAlpha(0);
-           // menu.clearAnim();
+            // menu.clearAnim();
         }
     }
 

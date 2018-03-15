@@ -20,6 +20,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -52,14 +54,17 @@ public class TabMenuView extends View {
     private final Paint FIN_PAINT = new Paint();   //背景的画笔
     // 文字绘制区域
     private final Rect mTextBound = new Rect();
-    // 图标可用的绘制区域
-    private final Rect mIconAvailableRect = new Rect();
-    // 图标真正的绘制区域
-    private final Rect mIconDrawRect = new Rect();
+    // 图标绘制区域
+    private final Rect mIconRect = new Rect();
     // 背景颜色, 默认
     private int mBackgroundColorNormal = 0xFFFFFFFF;
     // 背景颜色, 按压
     private int mBackgroundColorPress = 0xFFFFFFFF;
+
+    private int left1;
+    private int right1;
+    private int top1;
+    private int bottom1;
 
     /***************************************************************************************/
 
@@ -157,7 +162,7 @@ public class TabMenuView extends View {
         }
         // 2.图标, 计算出图标可以绘制的画布大小
         else if (TextUtils.isEmpty(mText) && null != mIconNormal) {
-            mIconAvailableRect.set(paddingLeft, paddingTop, paddingLeft + realWidth, paddingTop + realHeight);
+            mIconRect.set(paddingLeft, paddingTop, paddingLeft + realWidth, paddingTop + realHeight);
         }
         // 3. 文字+图标
         else {
@@ -177,7 +182,7 @@ public class TabMenuView extends View {
 
             // 2.计算出图标可以绘制的画布大小
             realHeight -= (mTextBound.height() + mPadding);
-            mIconAvailableRect.set(paddingLeft, paddingTop, paddingLeft + realWidth, paddingTop + realHeight);
+            mIconRect.set(paddingLeft, paddingTop, paddingLeft + realWidth, paddingTop + realHeight);
         }
     }
 
@@ -223,19 +228,26 @@ public class TabMenuView extends View {
         if (null != mIconNormal && null != mIconSelected) {
 
             // 1.计算真实的图标位置
-            float dx = 0, dy = 0;
-            float wRatio = mIconAvailableRect.width() * 1.0f / mIconNormal.getWidth();
-            float hRatio = mIconAvailableRect.height() * 1.0f / mIconNormal.getHeight();
-            if (wRatio > hRatio) {
-                dx = (mIconAvailableRect.width() - hRatio * mIconNormal.getWidth()) / 2;
-            } else {
-                dy = (mIconAvailableRect.height() - wRatio * mIconNormal.getHeight()) / 2;
+            if (left1 == 0) {
+                float dx = 0, dy = 0;
+                float wRatio = mIconRect.width() * 1.0f / mIconNormal.getWidth();
+                float hRatio = mIconRect.height() * 1.0f / mIconNormal.getHeight();
+                if (wRatio > hRatio) {
+                    dx = (mIconRect.width() - hRatio * mIconNormal.getWidth()) / 2;
+                } else {
+                    dy = (mIconRect.height() - wRatio * mIconNormal.getHeight()) / 2;
+                }
+                final int left = (int) (mIconRect.left + dx + 0.5f);
+                final int top = (int) (mIconRect.top + dy + 0.5f);
+                final int right = (int) (mIconRect.right - dx + 0.5f);
+                final int bottom = (int) (mIconRect.bottom - dy + 0.5f);
+                mIconRect.set(left, top, right, bottom);
+
+                left1 = left;
+                top1 = top;
+                right1 = right;
+                bottom1 = bottom;
             }
-            int left = (int) (mIconAvailableRect.left + dx + 0.5f);
-            int top = (int) (mIconAvailableRect.top + dy + 0.5f);
-            int right = (int) (mIconAvailableRect.right - dx + 0.5f);
-            int bottom = (int) (mIconAvailableRect.bottom - dy + 0.5f);
-            mIconDrawRect.set(left, top, right, bottom);
 
             // 2.画
             FIN_PAINT.reset();
@@ -246,7 +258,7 @@ public class TabMenuView extends View {
             FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
             FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
             FIN_PAINT.setAlpha(255 - alpha);
-            canvas.drawBitmap(mIconNormal, null, mIconDrawRect, FIN_PAINT);
+            canvas.drawBitmap(mIconNormal, null, mIconRect, FIN_PAINT);
             FIN_PAINT.reset();
             FIN_PAINT.clearShadowLayer();
             FIN_PAINT.setAntiAlias(true);
@@ -255,7 +267,7 @@ public class TabMenuView extends View {
             FIN_PAINT.setStrokeCap(Paint.Cap.ROUND);
             FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
             FIN_PAINT.setAlpha(alpha); //setAlpha必须放在paint的属性最后设置，否则不起作用
-            canvas.drawBitmap(mIconSelected, null, mIconDrawRect, FIN_PAINT);
+            canvas.drawBitmap(mIconSelected, null, mIconRect, FIN_PAINT);
             // Log.e("kalu6", "onDraw ==> 画图标");
         }
 
@@ -398,24 +410,16 @@ public class TabMenuView extends View {
         }
     }
 
-    private float dp2px(Context context, float dipValue) {
+    private final float dp2px(Context context, float dipValue) {
         float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale);
     }
-
-    private int left1;
-    private int right1;
-    private int left2;
-    private int right2;
 
     protected void beginAnim() {
 
         if (mHandler.hasMessages(1)) return;
 
-        left1 = mIconAvailableRect.left;
-        right1 = mIconAvailableRect.right;
-        left2 = mIconDrawRect.left;
-        right2 = mIconDrawRect.right;
+        Log.e("alu", "beginAnim");
         Message obtain = Message.obtain();
         obtain.what = 1;
         mHandler.sendMessage(obtain);
@@ -424,12 +428,14 @@ public class TabMenuView extends View {
     protected void clearAnim() {
 
         if (mHandler.hasMessages(1)) {
-            mHandler.removeCallbacksAndMessages(null);
+            //mHandler.removeCallbacksAndMessages(null);
 
-            mIconAvailableRect.left = left1;
-            mIconAvailableRect.right = right1;
-            mIconDrawRect.left = left2;
-            mIconDrawRect.right = right2;
+            mIconRect.left = left1;
+            mIconRect.right = right1;
+            mIconRect.top = top1;
+            mIconRect.bottom = bottom1;
+
+            Log.e("alu", "clearAnim");
 
             if (Looper.getMainLooper() == Looper.myLooper()) {
                 invalidate();
@@ -441,37 +447,37 @@ public class TabMenuView extends View {
 
     private void todo(int count) {
 
-        if (count <= 12) {
+        if (count <= 5) {
 
-            final int temp1 = mIconAvailableRect.width() / 14;
-            mIconAvailableRect.left = mIconAvailableRect.left + temp1;
-            mIconAvailableRect.right = mIconAvailableRect.right - temp1;
-
-            final int temp2 = mIconDrawRect.width() / 14;
-            mIconDrawRect.left = mIconDrawRect.left + temp2;
-            mIconDrawRect.right = mIconDrawRect.right - temp2;
+            Log.e("alu", "缩小");
+            final int temp1 = mIconRect.width() / 14;
+            mIconRect.left = mIconRect.left + temp1;
+            mIconRect.top = mIconRect.top + temp1;
+            mIconRect.right = mIconRect.right - temp1;
+            mIconRect.bottom = mIconRect.bottom - temp1;
 
             Message obtain = Message.obtain();
             obtain.what = count + 1;
             mHandler.sendMessageDelayed(obtain, 5);
-        } else if (count <= 24) {
+        } else if (count <= 10) {
 
-            final int temp1 = mIconAvailableRect.width() / 14;
-            mIconAvailableRect.left = mIconAvailableRect.left - temp1;
-            mIconAvailableRect.right = mIconAvailableRect.right + temp1;
-
-            final int temp2 = mIconDrawRect.width() / 14;
-            mIconDrawRect.left = mIconDrawRect.left - temp2;
-            mIconDrawRect.right = mIconDrawRect.right + temp2;
+            Log.e("alu", "放大");
+            final int temp1 = mIconRect.width() / 14;
+            mIconRect.left = mIconRect.left - temp1;
+            mIconRect.top = mIconRect.top - temp1;
+            mIconRect.right = mIconRect.right + temp1;
+            mIconRect.bottom = mIconRect.bottom + temp1;
 
             Message obtain = Message.obtain();
             obtain.what = count + 1;
             mHandler.sendMessageDelayed(obtain, 5);
         } else {
-            mIconAvailableRect.left = left1;
-            mIconAvailableRect.right = right1;
-            mIconDrawRect.left = left2;
-            mIconDrawRect.right = right2;
+
+            Log.e("alu", "复位");
+            mIconRect.left = left1;
+            mIconRect.right = right1;
+            mIconRect.top = top1;
+            mIconRect.bottom = bottom1;
         }
 
         if (Looper.getMainLooper() == Looper.myLooper()) {

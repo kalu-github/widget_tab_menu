@@ -468,6 +468,22 @@ public class TabMenuView extends View {
             mIconRect.right = mIconRect.right + temp1;
             mIconRect.bottom = mIconRect.bottom + temp1;
 
+            if (mIconRect.left < left1) {
+                mIconRect.left = left1;
+            }
+
+            if (mIconRect.right > right1) {
+                mIconRect.right = right1;
+            }
+
+            if (mIconRect.top < top1) {
+                mIconRect.top = top1;
+            }
+
+            if (mIconRect.bottom > bottom1) {
+                mIconRect.bottom = bottom1;
+            }
+
             Message obtain = Message.obtain();
             obtain.what = count + 1;
             mHandler.sendMessageDelayed(obtain, 5);

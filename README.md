@@ -7,18 +7,42 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
 
 ![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-01-04.gif )
 ![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-02-19.gif )
+![image](https://github.com/153437803/TabMenuLayout/blob/master/Screenrecorder-2018-02-20.gif )
 
+# 适用场景：
 ```
-###解决问题：
-
 1.点击选中菜单, 列表回滚到顶部, 功能已实现
-2.菜单切换, 图片缩小放大动画, 功能已实现（类是淘宝）
+2.菜单切换, 图片缩小放大动画, 功能已实现
 3.左右滑动, 底部菜单颜色渐变, 功能已实现
+4.viewpager可以滑动, 也可以禁止左右滑动
 ```
 
+# viewpager禁止左右滑动：
 ```
-###自定义属性：
- 
+public final class MeViewPager extends ViewPager {
+
+        public MeViewPager(Context context) {
+            super(context);
+        }
+
+        public MeViewPager(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+
+        @Override
+        public boolean onTouchEvent(MotionEvent arg0) {
+            return false;
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(MotionEvent arg0) {
+            return false;
+        }
+}
+```
+
+# 自定义属性：
+``` 
 <declare-styleable name="TabMenuLayout">
     <!-- 滑动变化透明度 -->
     <attr name="tml_switch_alpha" format="boolean" />
@@ -47,3 +71,49 @@ compile 'lib.kalu.tabmenu:tabmenulayout:<latest-version>'
     <attr name="tmv_background_selector_system" format="boolean" />
 </declare-styleable>
 ```
+# 使用方法：
+```
+# 关联viewpager
+TabMenuLayout.setViewPager(mViewPger);
+
+# 设置 监听
+TabMenuLayout.setOnTabMenuChangedListener(new TabMenuLayout.OnTabMenuChangedListener() {
+            @Override
+            public void onTabMenuClick(boolean isSelected, int tabPosition) {
+                if(isSelected){
+                    Toast.makeText(getApplicationContext(), "当前菜单已被选中", Toast.LENGTH_SHORT).show();
+                }
+                Log.e("kalu", "onTabMenuClick ==> isSelected = " + isSelected + ", tabPosition = " + tabPosition);
+            }
+
+            @Override
+            public void onTabMenuSwitch(int tabPosition) {
+                Log.e("kalu", "onTabMenuSwitch ==> tabPosition = " + tabPosition);
+            }
+});
+```
+
+# Proguard-Rules
+```
+-keep class lib.kalu.tabmenu.** {
+*;
+}
+```
+
+#
+
+# License
+```
+Copyright 2017 张航
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

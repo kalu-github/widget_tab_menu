@@ -17,11 +17,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -30,6 +27,8 @@ import java.lang.ref.WeakReference;
  * created by kalu on 2017/6/18 15:03
  */
 public class TabMenuView extends View {
+
+    private final String TAG = "com.lib.quasar.widget.menu.TabMenuView";
 
     private Bitmap mIconNormal;                   //默认图标
     private Bitmap mIconSelected;                 //选中的图标
@@ -217,11 +216,11 @@ public class TabMenuView extends View {
                 FIN_PAINT.setColor(mTextColorSelected);
                 FIN_PAINT.setAlpha(alpha);
                 canvas.drawText(mText, textX, textY, FIN_PAINT);
-                Log.e("kaluff", "文字 - 过度效果");
+                //  LogUtil.e(TAG, "文字 - 过度效果");
             } else {
                 FIN_PAINT.setColor(isHightLight ? mTextColorSelected : mTextColorNormal);
                 canvas.drawText(mText, textX, textY, FIN_PAINT);
-                Log.e("kaluff", "文字 - 普通效果");
+                //   LogUtil.e(TAG, "文字 - 普通效果");
             }
         }
 
@@ -272,9 +271,9 @@ public class TabMenuView extends View {
                 FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
                 FIN_PAINT.setAlpha(alpha); //setAlpha必须放在paint的属性最后设置，否则不起作用
                 canvas.drawBitmap(mIconSelected, null, mIconRect, FIN_PAINT);
-                Log.e("kalu6", "onDraw ==> 画图标, 高级");
+                //    LogUtil.e(TAG, "onDraw ==> 画图标, 高级");
             } else {
-                Log.e("kalu6", "onDraw ==> 画图标, 普通");
+                //   LogUtil.e(TAG, "onDraw ==> 画图标, 普通");
                 canvas.drawBitmap(isHightLight ? mIconSelected : mIconNormal, null, mIconRect, FIN_PAINT);
             }
         }

@@ -10,16 +10,16 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-
 
 /**
  * description: 底部导航菜单
  * created by kalu on 2017/6/18 15:03
  */
 public class TabMenuLayout extends LinearLayout {
+
+    private final String TAG = "com.lib.quasar.widget.menu.TabMenuLayout";
 
     private final String BUNDLE_PARCELABLE = "BUNDLE_PARCELABLE";
     private final Paint paint = new Paint();
@@ -125,7 +125,7 @@ public class TabMenuLayout extends LinearLayout {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
                 if (positionOffset <= 0.f) return;
-                Log.e("kaluff", "onPageScrolled, position = " + position + ", positionOffset = " + positionOffset);
+                // Log.e("kaluff", "onPageScrolled, position = " + position + ", positionOffset = " + positionOffset);
 
                 if (isSwitchAlpha) {
                     //滑动时的透明度动画
@@ -147,7 +147,7 @@ public class TabMenuLayout extends LinearLayout {
             public void onPageSelected(int position) {
 
                 for (int j = 0; j < getChildCount(); j++) {
-                    Log.e("kaluff", "onPageSelected ==> position = " + position + ", index = " + j);
+                    // Log.e("kaluff", "onPageSelected ==> position = " + position + ", index = " + j);
 
                     View sub = getChildAt(j);
                     if (null != sub && (sub instanceof TabMenuView)) {

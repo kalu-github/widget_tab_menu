@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\Android\space\TabMenuLayout_v1.0\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="D:\Android\space\TabMenuLayout_v1.0\app\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\Android\Mine\9_Menu\TabMenuLayout\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="D:\Android\Mine\9_Menu\TabMenuLayout\app\src\debug\jniLibs"/></dataSet></merger>

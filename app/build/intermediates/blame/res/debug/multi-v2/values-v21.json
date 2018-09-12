@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Android\\space\\TabMenuLayout_v1.0\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "D:\\Android\\Mine\\9_Menu\\TabMenuLayout\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\fc20f089b30d7b9a844b0f13300fb4c4\\res\\values-v21\\values-v21.xml",
+                    "source": "D:\\Android\\sdk\\studio_gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\b836ab1adf5baaff9cb5f2de5a3577ff\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\b0fdd57389e42ab90aa72611c5049eae\\res\\values-v21\\values-v21.xml",
+                    "source": "D:\\Android\\sdk\\studio_gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\ec158e7dd03aeeda55355fb04c4e4e67\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -42,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\d137f54ad054b0d80f1cc73c422fb4ee\\res\\values-v21\\values-v21.xml",
+                    "source": "D:\\Android\\sdk\\studio_gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\b8539dc93323de9c18ef87a31ec964d1\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,107,110,154,157,160,162,164,166,169,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,221,222,223,233,234,235,247,259,260,261,264,267,268,271,272",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

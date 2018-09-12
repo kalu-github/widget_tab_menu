@@ -19,8 +19,6 @@ import android.widget.LinearLayout;
  */
 public class TabMenuLayout extends LinearLayout {
 
-    private final String TAG = "com.lib.quasar.widget.menu.TabMenuLayout";
-
     private final String BUNDLE_PARCELABLE = "BUNDLE_PARCELABLE";
     private final Paint paint = new Paint();
 
@@ -63,8 +61,8 @@ public class TabMenuLayout extends LinearLayout {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
 
         paint.setAntiAlias(true);
         paint.setStrokeCap(Paint.Cap.ROUND);
@@ -101,7 +99,6 @@ public class TabMenuLayout extends LinearLayout {
                 tabView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         if (null != listener) {
                             View sub = getChildAt(tabPosition);
                             if (null != sub && (sub instanceof TabMenuView)) {
@@ -219,6 +216,34 @@ public class TabMenuLayout extends LinearLayout {
         }
     }
 
+    public void clearBadgeMessage(int position, int messageNum) {
+
+        if (position > (getChildCount() - 1)) return;
+
+        View sub = getChildAt(position);
+        if (null != sub && (sub instanceof TabMenuView)) {
+            TabMenuView menu = (TabMenuView) getChildAt(position);
+            final int badgeNumber = menu.getBadgeNumber();
+            int newNumber = badgeNumber - messageNum;
+            if (newNumber < 0) {
+                newNumber = 0;
+            }
+            menu.showBadgeNumber(newNumber);
+        }
+    }
+
+    public void autoIncrementMessage(int position) {
+
+        if (position > (getChildCount() - 1)) return;
+
+        View sub = getChildAt(position);
+        if (null != sub && (sub instanceof TabMenuView)) {
+            TabMenuView menu = (TabMenuView) getChildAt(position);
+            final int badgeNumber = menu.getBadgeNumber();
+            menu.showBadgeNumber(badgeNumber + 1);
+        }
+    }
+
     public void setBadgeMessageBackup(int position) {
 
         View sub = getChildAt(position);
@@ -230,6 +255,22 @@ public class TabMenuLayout extends LinearLayout {
 
     public void setBadgeMessage(int position, int badgeNumber) {
         setBadgeMessage(position, false, badgeNumber);
+    }
+
+    public void minusBadgeNumber(int position, int badgeNumber) {
+
+        if (position > (getChildCount() - 1)) return;
+
+        View sub = getChildAt(position);
+        if (null != sub && (sub instanceof TabMenuView)) {
+            TabMenuView menu = (TabMenuView) getChildAt(position);
+            final int badgeNumber1 = menu.getBadgeNumber();
+            int i = badgeNumber1 - badgeNumber;
+            if (i < 0) {
+                i = 0;
+            }
+            menu.showBadgeNumber(i);
+        }
     }
 
     public void setBadgeMessage(int position) {

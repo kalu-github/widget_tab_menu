@@ -1,5 +1,6 @@
 package lib.kalu.tabmenu;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -10,7 +11,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,47 +26,39 @@ import java.lang.ref.WeakReference;
  * description: 底部导航菜单
  * created by kalu on 2017/6/18 15:03
  */
-public class TabMenuView extends View {
+public final class TabMenuView extends View {
 
-    private final String TAG = "com.lib.quasar.widget.menu.TabMenuView";
-
+    // 画笔
+    private final Paint FIN_PAINT = new Paint();   //背景的画笔
+    // 图标绘制区域
+    private final Rect mIconRect = new Rect();
+    private final Handler mHandler = new WeakHandler(this);
     private Bitmap mIconNormal;                   //默认图标
     private Bitmap mIconSelected;                 //选中的图标
-
     // 文字信息
     private String mText;                         //描述文本
     private int mTextColorNormal = 0xFF999999;    //描述文本的默认显示颜色
     private int mTextColorSelected = 0xFF46C01B;  //述文本的默认选中显示颜色
     private int mTextSize = 12;                   //描述文本的默认字体大小 12sp
     private int mPadding = 10;                      //文字和图片之间的距离 5dp
-
     private boolean isHightLight = false; // 是否选中
     private boolean isSwitchAlpha = false;
-
     private float mAlpha = 0;                         //当前的透明度
-
     private int mBadgeBackgroundColor = 0xFFFF0000;       //默认红颜色
-
     // 未读消息, -1显示小圆点, >0显示消息数量(超过99显示99+)
     private int mBadgeNumber;
-
-    private boolean isUseSystemSelectorBg;
-
-    // 画笔
-    private final Paint FIN_PAINT = new Paint();   //背景的画笔
-    // 文字绘制区域
-    private final Rect mTextBound = new Rect();
-    // 图标绘制区域
-    private final Rect mIconRect = new Rect();
     // 背景颜色, 默认
-    private int mBackgroundColorNormal = 0xFFFFFFFF;
+    private int mBackgroundColorNormal = Color.TRANSPARENT;
     // 背景颜色, 按压
-    private int mBackgroundColorPress = 0xFFFFFFFF;
-
+    private int mBackgroundColorPress = Color.TRANSPARENT;
     private int left1;
     private int right1;
     private int top1;
     private int bottom1;
+
+    private float iconWidth;
+    private float iconHeight;
+    private float textHeight;
 
     /***************************************************************************************/
 
@@ -107,23 +99,20 @@ public class TabMenuView extends View {
             mTextColorSelected = a.getColor(R.styleable.TabMenuView_tmv_text_color_selected, mTextColorSelected);
             mBadgeBackgroundColor = a.getColor(R.styleable.TabMenuView_tmv_badge_color_background, mBadgeBackgroundColor);
             mPadding = (int) a.getDimension(R.styleable.TabMenuView_tmv_text_padding_icon, mPadding);
-            isUseSystemSelectorBg = a.getBoolean(R.styleable.TabMenuView_tmv_background_selector_system, false);
-
             mBackgroundColorNormal = a.getColor(R.styleable.TabMenuView_tmv_background_color_normal, mBackgroundColorNormal);
             mBackgroundColorPress = a.getColor(R.styleable.TabMenuView_tmv_background_color_press, mBackgroundColorPress);
+
+            textHeight = a.getDimension(R.styleable.TabMenuView_tmv_text_height, 0);
+            iconWidth = a.getDimension(R.styleable.TabMenuView_tmv_icon_width, 0);
+            iconHeight = a.getDimension(R.styleable.TabMenuView_tmv_icon_height, 0);
+
         } catch (Exception e) {
         } finally {
             a.recycle();
         }
 
-        if (isUseSystemSelectorBg) {
-            int[] temp = new int[]{android.R.attr.selectableItemBackground};
-            TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(temp);
-            Drawable drawable = typedArray.getDrawable(0);
-            a.recycle();
-            setBackgroundDrawable(drawable);
-        } else {
-            // 按压背景色
+        // 按压背景色
+        if (mBackgroundColorPress != Color.TRANSPARENT && mBackgroundColorNormal != Color.TRANSPARENT) {
             StateListDrawable drawable = new StateListDrawable();
             ColorDrawable colorDrawable1 = new ColorDrawable();
             colorDrawable1.setColor(mBackgroundColorPress);
@@ -144,54 +133,19 @@ public class TabMenuView extends View {
         if (mText == null && (mIconNormal == null || mIconSelected == null)) {
             throw new IllegalArgumentException("必须设置 tabText 或者 tabIconSelected、tabIconNormal 两个，或者全部设置");
         }
-
-        int paddingLeft = getPaddingLeft();
-        int paddingTop = getPaddingTop();
-        int paddingRight = getPaddingRight();
-        int paddingBottom = getPaddingBottom();
-        int measuredWidth = getMeasuredWidth();
-        int measuredHeight = getMeasuredHeight();
-
-        //计算出可用绘图的区域
-        int realWidth = measuredWidth - paddingLeft - paddingRight;
-        int realHeight = measuredHeight - paddingTop - paddingBottom;
-
-        // 1.文字, 计算文字的绘图区域
-        if (!TextUtils.isEmpty(mText) && null == mIconNormal) {
-            int textLeft = paddingLeft + (realWidth - mTextBound.width()) / 2;
-            int textTop = paddingTop + (realHeight - mTextBound.height()) / 2;
-            mTextBound.set(textLeft, textTop, textLeft + mTextBound.width(), textTop + mTextBound.height());
-        }
-        // 2.图标, 计算出图标可以绘制的画布大小
-        else if (TextUtils.isEmpty(mText) && null != mIconNormal) {
-            mIconRect.set(paddingLeft, paddingTop, paddingLeft + realWidth, paddingTop + realHeight);
-        }
-        // 3. 文字+图标
-        else {
-            // 初始化文字大小
-            FIN_PAINT.reset();
-            FIN_PAINT.clearShadowLayer();
-            FIN_PAINT.setTextSize(mTextSize);
-
-            // 1.计算文字的绘图区域
-            final Paint.FontMetricsInt fontMetricsInt = FIN_PAINT.getFontMetricsInt();
-            int fontHeight = (fontMetricsInt.bottom - fontMetricsInt.top) / 2;
-            int textLeft = paddingLeft;
-            int textTop = measuredHeight - paddingBottom - fontHeight;
-            int textRight = measuredWidth - paddingRight;
-            int textBottom = measuredHeight - paddingBottom;
-            mTextBound.set(textLeft, textTop, textRight, textBottom);
-
-            // 2.计算出图标可以绘制的画布大小
-            realHeight -= (mTextBound.height() + mPadding);
-            mIconRect.set(paddingLeft, paddingTop, paddingLeft + realWidth, paddingTop + realHeight);
-        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // Log.e("kalu6", "onDraw ==> id = " + getClass().getCanonicalName());
+
+        // 初始化文字大小
+        FIN_PAINT.reset();
+        FIN_PAINT.clearShadowLayer();
+        FIN_PAINT.setTextSize(mTextSize);
+
+        int height = getHeight();
+        int width1 = getWidth();
 
         final int alpha = (int) Math.ceil(mAlpha * 255);
 
@@ -207,8 +161,8 @@ public class TabMenuView extends View {
             FIN_PAINT.setStrokeJoin(Paint.Join.ROUND);
             FIN_PAINT.setFakeBoldText(true);
             FIN_PAINT.setTextAlign(Paint.Align.CENTER);
-            final int textX = mTextBound.centerX();
-            final int textY = mTextBound.bottom - mTextBound.height() * 1 / 3;
+            final float textX = width1 / 2f;
+            final float textY = (height - textHeight / 2);
             if (isSwitchAlpha) {
                 FIN_PAINT.setColor(mTextColorNormal);
                 FIN_PAINT.setAlpha(255 - alpha);
@@ -228,25 +182,18 @@ public class TabMenuView extends View {
         if (null != mIconNormal && null != mIconSelected) {
 
             // 1.计算真实的图标位置
-            if (left1 == 0) {
-                float dx = 0, dy = 0;
-                float wRatio = mIconRect.width() * 1.0f / mIconNormal.getWidth();
-                float hRatio = mIconRect.height() * 1.0f / mIconNormal.getHeight();
-                if (wRatio > hRatio) {
-                    dx = (mIconRect.width() - hRatio * mIconNormal.getWidth()) / 2;
-                } else {
-                    dy = (mIconRect.height() - wRatio * mIconNormal.getHeight()) / 2;
-                }
-                final int left = (int) (mIconRect.left + dx + 0.5f);
-                final int top = (int) (mIconRect.top + dy + 0.5f);
-                final int right = (int) (mIconRect.right - dx + 0.5f);
-                final int bottom = (int) (mIconRect.bottom - dy + 0.5f);
-                mIconRect.set(left, top, right, bottom);
-
-                left1 = left;
-                top1 = top;
-                right1 = right;
-                bottom1 = bottom;
+            if (left1 == 0 && top1 == 0 && right1 == 0 && bottom1 == 0) {
+                int c1 = width1 / 2;
+                int c2 = (int) (iconWidth / 5);
+                int c3 = (int) (iconHeight / 5);
+                left1 = (int) (c1 - iconWidth / 2) + c2;
+                top1 = c3;
+                right1 = (int) (c1 + iconWidth / 2) - c2;
+                bottom1 = (int) iconHeight - c3;
+                mIconRect.left = left1;
+                mIconRect.right = right1;
+                mIconRect.top = top1;
+                mIconRect.bottom = bottom1;
             }
 
             // 2.画
@@ -359,11 +306,6 @@ public class TabMenuView extends View {
         }
     }
 
-    private final float dp2px(Context context, float dipValue) {
-        float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale);
-    }
-
     /**
      * 显示小圆点
      */
@@ -440,6 +382,8 @@ public class TabMenuView extends View {
         return this.isHightLight;
     }
 
+    private final ValueAnimator valueAnimator = new ValueAnimator();
+
     protected final void beginAnim() {
 
         if (mHandler.hasMessages(1)) return;
@@ -452,8 +396,9 @@ public class TabMenuView extends View {
 
     protected final void clearAnim() {
 
+
         if (mHandler.hasMessages(1)) {
-            //mHandler.removeCallbacksAndMessages(null);
+            mHandler.removeCallbacksAndMessages(null);
 
             mIconRect.left = left1;
             mIconRect.right = right1;
@@ -483,7 +428,7 @@ public class TabMenuView extends View {
 
             Message obtain = Message.obtain();
             obtain.what = count + 1;
-            mHandler.sendMessageDelayed(obtain, 5);
+            mHandler.sendMessageDelayed(obtain, 0);
         } else if (count <= 10) {
 
             // Log.e("alu", "放大");
@@ -511,7 +456,7 @@ public class TabMenuView extends View {
 
             Message obtain = Message.obtain();
             obtain.what = count + 1;
-            mHandler.sendMessageDelayed(obtain, 5);
+            mHandler.sendMessageDelayed(obtain, 0);
         } else {
 
             // Log.e("alu", "复位");
@@ -530,7 +475,10 @@ public class TabMenuView extends View {
         //  Log.e("kalu44", "count = " + count + ", Repeat = " + mIconAvailableRect.left + " --- " + mIconAvailableRect.right + " --- " + System.currentTimeMillis());
     }
 
-    private final Handler mHandler = new WeakHandler(this);
+    private final float dp2px(Context context, float dipValue) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale);
+    }
 
     private static class WeakHandler extends Handler {
 

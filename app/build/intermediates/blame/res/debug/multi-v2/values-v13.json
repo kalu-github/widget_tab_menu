@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Android\\space\\TabMenuLayout_v1.0\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v13\\values-v13.xml",
+            "outputFile": "D:\\Android\\Mine\\9_Menu\\TabMenuLayout\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v13\\values-v13.xml",
             "map": [
                 {
-                    "source": "D:\\Android\\gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\d137f54ad054b0d80f1cc73c422fb4ee\\res\\values-v13\\values-v13.xml",
+                    "source": "D:\\Android\\sdk\\studio_gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\b8539dc93323de9c18ef87a31ec964d1\\res\\values-v13\\values-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

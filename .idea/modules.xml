@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TabMenuLayout_v1.0.iml" filepath="$PROJECT_DIR$/TabMenuLayout_v1.0.iml" />
-      <module fileurl="file://D:\Android\space\TabMenuLayout_v1.0\TabMenu_Demo.iml" filepath="D:\Android\space\TabMenuLayout_v1.0\TabMenu_Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TabMenuLayout.iml" filepath="$PROJECT_DIR$/TabMenuLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../space/TabMenuLayout_v1.0/TabMenu_Demo.iml" filepath="$PROJECT_DIR$/../../../space/TabMenuLayout_v1.0/TabMenu_Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
     </modules>
